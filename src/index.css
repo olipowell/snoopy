@@ -1640,6 +1640,10 @@ button {
     padding: 0 24px;
   }
 
+  .hero-title {
+    font-size: 48px;
+  }
+
   .device-frame .audio-player {
     max-width: 676px;
   }
