@@ -131,7 +131,7 @@ button {
   width: 36px;
   height: 36px;
   place-items: center;
-  border: 1px solid #b2b2b2;
+  border: none;
   border-radius: 999px;
 }
 
