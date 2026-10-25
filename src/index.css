@@ -164,7 +164,7 @@ button {
   flex-wrap: wrap;
   gap: 8px 16px;
   padding: 17px 20px 20px;
-  color: #006363;
+  color: #008080;
   font-family: "BBC Reith Sans:Regular", Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -182,7 +182,7 @@ button {
 }
 
 .updated-bolt {
-  color: #00a3a3;
+  color: #008080;
   fill: currentColor;
 }
 
@@ -246,18 +246,18 @@ button {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #10d4d6;
-  box-shadow: 0 0 0 0 rgba(16, 212, 214, 0.65);
+  background: #00e5e5;
+  box-shadow: 0 0 0 0 rgba(0, 229, 229, 0.65);
   animation: live-pulse 1.6s ease-out infinite;
 }
 
 @keyframes live-pulse {
   70% {
-    box-shadow: 0 0 0 14px rgba(16, 212, 214, 0);
+    box-shadow: 0 0 0 14px rgba(0, 229, 229, 0);
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(16, 212, 214, 0);
+    box-shadow: 0 0 0 0 rgba(0, 229, 229, 0);
   }
 }
 
@@ -302,7 +302,7 @@ button {
   padding-right: 24px;
   padding-left: 24px;
   color: white;
-  background: #006363;
+  background: #008080;
 }
 
 .page-nav button:not(.active) {
@@ -966,7 +966,7 @@ button {
   display: block;
   width: 68px;
   height: 68px;
-  border: 3px solid #10d4d6;
+  border: 3px solid #00e5e5;
   border-radius: 999px;
   padding: 3px;
   background: #fff;
