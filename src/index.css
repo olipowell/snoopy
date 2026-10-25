@@ -1108,6 +1108,75 @@ button {
   margin-top: 18px;
 }
 
+.live-intro-card,
+.live-update-card {
+  margin-bottom: 14px;
+  border-radius: 22px;
+  padding: 20px;
+}
+
+.live-intro-card {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.live-intro-card a {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.live-update-card .author-row {
+  margin-bottom: 18px;
+}
+
+.live-update-time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #555;
+  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
+  font-size: 12px;
+}
+
+.live-update-time .live-dot {
+  width: 8px;
+  height: 8px;
+}
+
+.live-update-card h2 {
+  margin-top: 10px;
+  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
+  font-size: 23px;
+  line-height: 1.18;
+  letter-spacing: -0.25px;
+}
+
+.live-update-card > p,
+.live-update-card > ul {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.live-update-card > ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.live-update-card > ul li + li {
+  margin-top: 8px;
+}
+
+.live-update-card .meta {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid #e1e1e1;
+}
+
 .final-card {
   margin-bottom: 44px;
 }

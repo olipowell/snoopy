@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import { liveArticle, type LiveUpdate } from "./content/liveArticle"
 
 const A = `${import.meta.env.BASE_URL}assets`
 
@@ -14,33 +15,33 @@ const navigation = [
 const stories = [
   {
     image: "feeaf.png",
-    name: "David Attenborough",
-    title: "Japan remains on high alert after earthquake",
+    name: "BBC News",
+    title: "Storm Boelo batters Cumbrian coastal communities",
   },
   {
     image: "f2dfd.png",
-    name: "Maia Davies",
-    title: "What residents saw as tsunami warnings sounded",
+    name: "BBC Wales",
+    title: "Flooding disrupts train services around Cardiff",
   },
   {
     image: "ade29.png",
     name: "Sally Bundock",
-    title: "The latest update from the BBC newsroom",
+    title: "The latest Storm Boelo update from the newsroom",
   },
   {
     image: "ad18a.png",
-    name: "Waihiga Mwaura",
-    title: "Why aftershocks can continue for days",
+    name: "BBC Weather",
+    title: "When will the strongest winds begin to ease?",
   },
   {
     image: "5716f.png",
-    name: "Kate Williams",
-    title: "Japan's emergency response explained",
+    name: "BBC Scotland",
+    title: "Power cuts and flooding reported across Scotland",
   },
   {
     image: "3cc5a.png",
     name: "Joshua Nevett",
-    title: "What happens next along the coast",
+    title: "What the weather warning colours mean",
   },
 ]
 
@@ -99,13 +100,6 @@ const podcasts = [
 ]
 
 const audioItems = [...soundStations, ...podcasts]
-
-const summaries = [
-  "Earlier tsunami warnings for Japan have now been downgraded after a 7.7 magnitude earthquake struck off the country's north-east coast",
-  "Japan remains on high alert for aftershocks, with officials warning of an increased risk of another large earthquake in the next week",
-  "The first tsunami waves reached Iwate prefecture, while residents across the region were urged to remain away from the coast",
-  "No major damage has been reported and officials say there were no abnormalities at the country's nuclear facilities",
-]
 
 const videoItems = [
   {
@@ -353,13 +347,15 @@ function Reaction({
 function Meta({
   dark = false,
   usefulCount,
+  timestamp = "3 mins ago",
 }: {
   dark?: boolean
   usefulCount: number
+  timestamp?: string
 }) {
   return (
     <div className={`meta ${dark ? "meta-dark" : ""}`}>
-      <span>3 mins ago</span>
+      <span>{timestamp}</span>
       <Reaction dark={dark} initialCount={usefulCount} />
     </div>
   )
@@ -382,23 +378,60 @@ function HeadingCard({
   name,
   title,
   usefulCount,
+  timestamp,
 }: {
   image?: string
   name?: string
   title: string
   usefulCount: number
+  timestamp?: string
 }) {
   return (
     <section className="card heading-card">
       {image && name && <Author image={image} name={name} />}
       <h2>{title}</h2>
-      <Meta usefulCount={usefulCount} />
+      <Meta usefulCount={usefulCount} timestamp={timestamp} />
     </section>
   )
 }
 
 function TextCard({ children }: { children: React.ReactNode }) {
   return <section className="card text-card">{children}</section>
+}
+
+function LiveUpdateCard({
+  update,
+  isLast,
+}: {
+  update: LiveUpdate
+  isLast: boolean
+}) {
+  return (
+    <section
+      className={`card live-update-card ${isLast ? "final-card" : ""}`}
+      id={update.id}
+    >
+      {update.author && (
+        <Author image={update.author.image} name={update.author.name} />
+      )}
+      <div className="live-update-time">
+        <span className="live-dot" aria-hidden="true" />
+        <time>{update.time}</time>
+      </div>
+      <h2>{update.headline}</h2>
+      {update.paragraphs.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+      {update.bullets && (
+        <ul>
+          {update.bullets.map((bullet) => (
+            <li key={bullet}>{bullet}</li>
+          ))}
+        </ul>
+      )}
+      <Meta timestamp={`Posted at ${update.time}`} usefulCount={update.usefulCount} />
+    </section>
+  )
 }
 
 function VideosPage() {
@@ -859,7 +892,6 @@ export default function App() {
     null,
   )
   const [summaryIndex, setSummaryIndex] = useState(0)
-  const [liveViewerOpen, setLiveViewerOpen] = useState(false)
   const [autoplayEnabled, setAutoplayEnabled] = useState(false)
   const [autoplayPromptOpen, setAutoplayPromptOpen] = useState(true)
 
@@ -887,7 +919,7 @@ export default function App() {
           <section className="topper">
             <div className="utility-row">
               <button type="button" className="topic-chip">
-                Climate
+                {liveArticle.topic}
               </button>
               <button
                 type="button"
@@ -897,43 +929,21 @@ export default function App() {
                 <img src={`${A}/9adc7.svg`} alt="" />
               </button>
             </div>
-            <h1 className="hero-title">
-              Japan tsunami warnings downgraded after earthquake
-            </h1>
+            <h1 className="hero-title">{liveArticle.headline}</h1>
             <div className="updated">
               <img src={`${A}/a7698.svg`} alt="" />
-              <span>Updated 3 minutes ago</span>
+              <span>{liveArticle.updatedLabel}</span>
             </div>
             <div className="hero-media">
-              {autoplayEnabled ? (
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  poster={`${A}/a4e74.png`}
-                  aria-label="Live video from Japan"
-                >
-                  <source src={`${A}/lead-video.mp4`} type="video/mp4" />
-                  <source src={`${A}/lead-video.mov`} />
-                </video>
-              ) : (
-                <img
-                  className="hero-poster"
-                  src={`${A}/a4e74.png`}
-                  alt="Live view from Japan"
-                />
-              )}
+              <img
+                className="hero-poster"
+                src={`${A}/${liveArticle.heroImage}`}
+                alt={liveArticle.heroAlt}
+              />
               <div className="live-pill">
                 <span className="live-dot" aria-hidden="true" />
                 <span>Live</span>
               </div>
-              <button
-                type="button"
-                className="hero-live-hit"
-                onClick={() => setLiveViewerOpen(true)}
-                aria-label="Open live broadcast"
-              />
             </div>
           </section>
 
@@ -966,18 +976,18 @@ export default function App() {
                     )
                   }}
                 >
-                  {summaries.map((summary, index) => (
+                  {liveArticle.summaries.map((summary, index) => (
                     <p
                       className="summary-slide"
                       key={summary}
-                      aria-label={`Summary ${index + 1} of 4`}
+                      aria-label={`Summary ${index + 1} of ${liveArticle.summaries.length}`}
                     >
                       {summary}
                     </p>
                   ))}
                 </div>
                 <div className="summary-dots" aria-hidden="true">
-                  {summaries.map((_, index) => (
+                  {liveArticle.summaries.map((_, index) => (
                     <span
                       key={index}
                       className={index === summaryIndex ? "active" : ""}
@@ -1003,212 +1013,24 @@ export default function App() {
                 </div>
               </section>
 
-              <HeadingCard
-                image="f2dfd.png"
-                name="Maia Davies"
-                title="Japan on high alert for large second quake after earthquake triggers tsunami warnings"
-                usefulCount={183}
-              />
-              {autoplayEnabled ? (
-                <video
-                  className="article-image"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  controls
-                  poster={`${A}/a4e74.png`}
-                  aria-label="Emergency response in Japan"
+              <section className="card live-intro-card">
+                <p>{liveArticle.description}</p>
+                <a
+                  href={liveArticle.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  <source
-                    src={`${A}/article-lead-video.mp4`}
-                    type="video/mp4"
-                  />
-                </video>
-              ) : (
-                <img
-                  className="article-image"
-                  src={`${A}/a4e74.png`}
-                  alt="Emergency warning signage over a road in Japan"
-                />
-              )}
-              <TextCard>
-                <p>
-                  Japan remains on high alert for aftershocks after its
-                  meteorological agency warned of an increased risk of a large
-                  earthquake - measuring 8.0 or higher - in the next week.
-                </p>
-                <p>
-                  It comes after thousands of people were urged to seek higher
-                  ground in the earthquake-prone country on Monday after a 7.7
-                  magnitude quake struck off its north-east coast.
-                </p>
-                <p>
-                  The undersea activity off the Iwate prefecture triggered a
-                  string of tsunami warnings in the region and tremors as far
-                  away as the capital Tokyo, some 530km (330 miles) south.
-                </p>
-                <p>
-                  One resident said “everyone ran” after the earthquake alert
-                  sounded.
-                </p>
-                <p>
-                  The tsunami warnings were soon downgraded to advisories - the
-                  lowest level - but people are still warned to remain away from
-                  the coast.
-                </p>
-                <p>
-                  Waves reached heights of 80cm and no injuries or major damage
-                  were immediately reported.
-                </p>
-                <p>
-                  The UN&apos;s nuclear watchdog said it had been informed by
-                  Japanese officials that no abnormalities occurred at the
-                  country&apos;s nuclear facilities.
-                </p>
-              </TextCard>
-
-              <HeadingCard
-                title="Further earthquakes occur in northern Japan"
-                usefulCount={94}
-              />
-              <TextCard>
-                <p>
-                  Smaller earthquakes often follow after larger ones - these are
-                  known as aftershocks.
-                </p>
-                <p>
-                  Following the 7.7 quake that occurred around 16:52 local time
-                  (08:52 BST) today, the Japan Meteorological Agency has
-                  recorded several smaller earthquakes.
-                </p>
-                <p>
-                  Off the coast of Sanriku, where today&apos;s large earthquake
-                  took place, there have been several smaller ones.
-                </p>
-                <p>
-                  The agency records the latest there at a magnitude of 5.4.
-                  Earlier, it reported one at 4.5 and another at 4.9.
-                </p>
-                <p>
-                  Elsewhere, a 4.3 magnitude earthquake was recorded off the
-                  Kiisuido Strait, in the south of the country.
-                </p>
-              </TextCard>
-
-              <HeadingCard
-                image="49a3a.png"
-                name="Imogen James"
-                title="A 7.7 earthquake and tsunami advisories: What we know"
-                usefulCount={327}
-              />
-              {autoplayEnabled ? (
-                <video
-                  className="article-image"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  controls
-                  poster={`${A}/a4e74.png`}
-                  aria-label="Tsunami advisory in Japan"
-                >
-                  <source
-                    src={`${A}/article-third-video.mp4`}
-                    type="video/mp4"
-                  />
-                </video>
-              ) : (
-                <img
-                  className="article-image"
-                  src={`${A}/a4e74.png`}
-                  alt="A tsunami advisory displayed on a road sign"
-                />
-              )}
-              <TextCard>
-                <p>
-                  A <a href="#latest">7.7 magnitude earthquake</a> occurred off
-                  Sanriku, off Japan&apos;s northeast coast, at 16:52 (08:52
-                  BST) local time and had a depth of 19km (11.8 miles).
-                </p>
-                <p>
-                  Its strength was revised up, after previously being recorded
-                  at 7.5 and 7.4. The Japanese Meteorological Agency warns of
-                  aftershocks that could continue throughout the week.
-                </p>
-                <p>
-                  A tourist in Japan told the BBC he experienced the building
-                  “swaying and everyone&apos;s phone sounded the emergency
-                  alarm”.
-                </p>
-                <p>
-                  Following the quake, tsunami warnings were triggered, covering
-                  much of the northeast. All the warnings have been downgraded
-                  to advisories, but{" "}
-                  <a href="#coast">people are still advised to remain away</a>{" "}
-                  from the coast and large bodies of water.
-                </p>
-                <p>
-                  The first tsunami waves reached the Iwate prefecture, with one
-                  as high as 40cm recorded in Miyako port.
-                </p>
-                <p>
-                  The Japan Meteorological Agency initially forecast tsunami
-                  waves of up to 3m (10ft) reaching the Pacific coast of
-                  Hokkaido and Iwate prefectures.
-                </p>
-                <p>
-                  Around 100 households are without power, according to the
-                  cabinet secretary, and some bullet train services have resumed
-                  after earlier cancellations.
-                </p>
-              </TextCard>
-
-              <section className="video-card">
-                <img
-                  src={`${A}/a4e74.png`}
-                  alt="Waves and traffic in northern Japan"
-                />
-                <div className="video-gradient" />
-                <div className="duration">
-                  <img src={`${A}/322f3.svg`} alt="" />
-                  <span>27:00</span>
-                </div>
-                <h2>Watch: Waves swell in Hokkaido following earthquake</h2>
-                <div className="meta meta-dark">
-                  <span>3 mins ago</span>
-                  <Reaction dark initialCount={218} />
-                </div>
+                  View the original live coverage on BBC News
+                </a>
               </section>
 
-              <section className="card update-card">
-                <Author image="5716f.png" name="Kate Williams" />
-                <p>
-                  Japan&apos;s Cabinet Secretary Minoru Kihara is giving an
-                  update and says residents should stay inland until tsunami
-                  warnings are lifted.
-                </p>
-                <p>
-                  Around 100 households are without power, he says, and some
-                  bullet train services are currently on hold.
-                </p>
-                <Meta usefulCount={76} />
-              </section>
-
-              <section className="card update-card final-card">
-                <Author image="3cc5a.png" name="Joshua Nevett" />
-                <p>
-                  Earlier we reported that the former leader of the Green Party,
-                  Caroline Lucas, has suggested she didn&apos;t want her former
-                  party to contest the Makerfield by-election.
-                </p>
-                <p>
-                  Lucas said “Burnham&apos;s longstanding commitment to a fairer
-                  voting system could transform our democracy” and counter the
-                  “dire threat of a Reform UK government”.
-                </p>
-                <Meta usefulCount={41} />
-              </section>
+              {liveArticle.updates.map((update, index) => (
+                <LiveUpdateCard
+                  key={update.id}
+                  update={update}
+                  isLast={index === liveArticle.updates.length - 1}
+                />
+              ))}
             </>
           ) : activeNav === "Videos" ? (
             <VideosPage />
@@ -1238,9 +1060,6 @@ export default function App() {
             stationIndex={audioStationIndex}
             onClose={() => setAudioStationIndex(null)}
           />
-        )}
-        {liveViewerOpen && (
-          <LiveVideoViewer onClose={() => setLiveViewerOpen(false)} />
         )}
         {autoplayPromptOpen && (
           <AutoplayPrompt
