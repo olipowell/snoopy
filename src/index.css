@@ -1326,11 +1326,6 @@ button {
   border-radius: 50%;
 }
 
-.update-actions-trigger:hover,
-.update-actions-trigger[aria-expanded="true"] {
-  background: #eeeeef;
-}
-
 .update-actions-trigger img {
   width: 24px;
   height: 24px;
