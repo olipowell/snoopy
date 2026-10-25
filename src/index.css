@@ -1115,6 +1115,16 @@ button {
   padding: 20px;
 }
 
+#england-flood-warnings {
+  padding-top: 8px;
+  padding-bottom: 16px;
+}
+
+#england-flood-warnings .reaction {
+  gap: 5px 0;
+  column-gap: 0;
+}
+
 .live-intro-card {
   font-size: 15px;
   line-height: 1.5;
