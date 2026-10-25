@@ -66,6 +66,11 @@ button {
   padding-bottom: 138px;
 }
 
+.mobile-page > article {
+  container-name: article-page;
+  container-type: inline-size;
+}
+
 .site-header {
   position: sticky;
   z-index: 20;
@@ -1783,7 +1788,7 @@ button {
   }
 }
 
-@media (min-width: 764px) {
+@container article-page (min-width: 700px) {
   .page-nav {
     column-gap: 16px;
   }
