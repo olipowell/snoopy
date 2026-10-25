@@ -391,15 +391,21 @@ button {
 
 .story-avatars {
   display: flex;
-  gap: 17px;
+  width: 100%;
+  justify-content: safe center;
+  gap: clamp(12px, 4vw, 17px);
   overflow-x: auto;
+  overscroll-behavior-inline: contain;
   padding: 0 16px 4px;
   scrollbar-width: none;
+  scroll-padding-inline: 16px;
+  scroll-snap-type: x proximity;
   touch-action: pan-x;
 }
 
 .story-avatars button {
-  flex: 0 0 61px;
+  flex: 0 0 68px;
+  scroll-snap-align: start;
   border-radius: 999px;
 }
 
@@ -929,8 +935,8 @@ button {
 
 .avatar-frame {
   display: block;
-  width: 61px;
-  height: 61px;
+  width: 68px;
+  height: 68px;
   border: 3px solid #10d4d6;
   border-radius: 999px;
   padding: 3px;
@@ -1679,6 +1685,19 @@ button {
 
   .page-nav button {
     font-size: 14px;
+  }
+
+  .story-avatars {
+    justify-content: flex-start;
+    gap: clamp(8px, 2vw, 17px);
+    overflow-x: visible;
+  }
+
+  .story-avatars button {
+    display: grid;
+    min-width: 0;
+    flex: 1 1 0;
+    place-items: center;
   }
 
   .device-frame .audio-player {
