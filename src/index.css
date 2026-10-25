@@ -161,15 +161,39 @@ button {
 .updated {
   display: flex;
   align-items: center;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 8px 16px;
   padding: 17px 20px 20px;
-  color: #555;
-  font-size: 12px;
+  color: #006363;
+  font-family: "BBC Reith Sans:Regular", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
 }
 
-.updated img {
+.updated-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.updated svg {
   width: 20px;
   height: 20px;
+}
+
+.updated-bolt {
+  color: #00a3a3;
+  fill: currentColor;
+}
+
+.updated-eye path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.updated-eye circle {
+  fill: currentColor;
 }
 
 .hero-media {
@@ -278,7 +302,7 @@ button {
   padding-right: 24px;
   padding-left: 24px;
   color: white;
-  background: #1a1a1a;
+  background: #006363;
 }
 
 .page-nav button:not(.active) {
