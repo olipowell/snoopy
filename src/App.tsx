@@ -1074,7 +1074,7 @@ export default function App() {
               />
               <div className="live-pill">
                 <span className="live-dot" aria-hidden="true" />
-                <span>Live</span>
+                <span className="live-label">Live</span>
               </div>
             </div>
           </section>

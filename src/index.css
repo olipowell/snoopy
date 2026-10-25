@@ -243,6 +243,7 @@ button {
 }
 
 .live-dot {
+  --live-pulse-radius: 14px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -253,7 +254,7 @@ button {
 
 @keyframes live-pulse {
   70% {
-    box-shadow: 0 0 0 14px rgba(0, 229, 229, 0);
+    box-shadow: 0 0 0 var(--live-pulse-radius) rgba(0, 229, 229, 0);
   }
 
   100% {
@@ -1745,6 +1746,18 @@ button {
   color: rgba(255, 255, 255, 0.7);
   font-size: 11px;
   white-space: nowrap;
+}
+
+@media (max-width: 599px) {
+  .live-label {
+    font-size: 16px;
+  }
+
+  .live-pill .live-dot {
+    --live-pulse-radius: 7px;
+    width: 16px;
+    height: 16px;
+  }
 }
 
 @media (min-width: 600px) {
