@@ -1003,9 +1003,16 @@ button {
   display: flex;
   align-items: center;
   gap: 5px;
-  color: #000;
-  font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
+  color: #757575;
+  font-family: "BBC Reith Sans:Regular", Arial, sans-serif;
   font-size: 12px;
+}
+
+.reaction span {
+  color: #757575;
+  font-family: "BBC Reith Sans:Regular", Arial, sans-serif;
+  font-weight: 400;
+  transition: color 220ms ease;
 }
 
 .reaction svg {
@@ -1020,11 +1027,20 @@ button {
   color: #000;
 }
 
+.reaction.selected span {
+  color: #000;
+}
+
 .reaction.selected svg {
   transform: scale(1.08);
 }
 
 .lightbulb-outline {
+  fill: #757575;
+  transition: fill 220ms ease;
+}
+
+.reaction.selected .lightbulb-outline {
   fill: #000;
 }
 
@@ -1201,6 +1217,10 @@ button {
   color: #757575;
   font-size: 14px;
   line-height: 14px;
+}
+
+.live-update-card .reaction.selected span {
+  color: #000;
 }
 
 .live-update-author {
@@ -1775,7 +1795,9 @@ button {
   }
 
   .reaction svg,
-  .lightbulb-fill {
+  .reaction span,
+  .lightbulb-fill,
+  .lightbulb-outline {
     transition: none;
   }
 
