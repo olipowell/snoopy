@@ -1009,18 +1009,63 @@ button {
 }
 
 .reaction svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
+  overflow: visible;
   fill: currentColor;
   transition: transform 160ms ease;
 }
 
 .reaction.selected {
-  color: #087f82;
+  color: #000;
 }
 
 .reaction.selected svg {
   transform: scale(1.08);
+}
+
+.lightbulb-outline {
+  fill: #000;
+}
+
+.lightbulb-fill {
+  fill: #ffd400;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.reaction.selected .lightbulb-fill {
+  opacity: 1;
+}
+
+.lightbulb-rays {
+  fill: none;
+  stroke: #e8b800;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  opacity: 0;
+  transform-box: view-box;
+  transform-origin: 12px 9px;
+}
+
+.reaction.selected .lightbulb-rays {
+  animation: lightbulb-rays 520ms ease-out both;
+}
+
+@keyframes lightbulb-rays {
+  0% {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
 }
 
 .article-image {
@@ -1727,6 +1772,15 @@ button {
   .autoplay-switch,
   .autoplay-switch img {
     transition: none;
+  }
+
+  .reaction svg,
+  .lightbulb-fill {
+    transition: none;
+  }
+
+  .reaction.selected .lightbulb-rays {
+    animation: none;
   }
 
 }

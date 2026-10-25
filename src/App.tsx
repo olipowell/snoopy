@@ -312,8 +312,25 @@ function LiveVideoViewer({ onClose }: { onClose: () => void }) {
 
 function LightbulbIcon() {
   return (
-    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-      <path d="M9 22h6v-2H9v2Zm3-20a7 7 0 0 0-4 12.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26A7 7 0 0 0 12 2Zm2.85 11.1-.85.6V17h-4v-3.3l-.85-.6A5 5 0 1 1 17 9c0 1.63-.8 3.16-2.15 4.1Z" />
+    <svg
+      className="lightbulb-icon"
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      aria-hidden="true"
+    >
+      <g className="lightbulb-rays">
+        <line x1="12" y1="0.75" x2="12" y2="2.75" />
+        <line x1="4.3" y1="2.8" x2="5.8" y2="4.3" />
+        <line x1="19.7" y1="2.8" x2="18.2" y2="4.3" />
+        <line x1="1.25" y1="9" x2="3.25" y2="9" />
+        <line x1="22.75" y1="9" x2="20.75" y2="9" />
+      </g>
+      <circle className="lightbulb-fill" cx="12" cy="9" r="4.85" />
+      <path
+        className="lightbulb-outline"
+        d="M9 22h6v-2H9v2Zm3-20a7 7 0 0 0-4 12.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26A7 7 0 0 0 12 2Zm2.85 11.1-.85.6V17h-4v-3.3l-.85-.6A5 5 0 1 1 17 9c0 1.63-.8 3.16-2.15 4.1Z"
+      />
     </svg>
   )
 }
