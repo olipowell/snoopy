@@ -122,7 +122,7 @@ button {
   border-radius: 999px;
   padding: 9px 14px;
   font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1;
 }
 
@@ -141,6 +141,7 @@ button {
 }
 
 .hero-title {
+  color: #1a1a1a;
   padding-top: 16px;
   padding-right: 20px;
   padding-bottom: 0;
@@ -234,15 +235,14 @@ button {
 .page-nav {
   display: flex;
   width: 100%;
-  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px 16px;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
-  padding-top: 16px;
-  padding-right: 12px;
-  padding-bottom: 16px;
-  padding-left: 12px;
+  padding: 24px 16px;
   scrollbar-width: none;
-  scroll-padding-inline: 12px;
+  scroll-padding-inline: 16px;
   scroll-snap-type: x proximity;
   touch-action: pan-x;
 }
@@ -254,23 +254,28 @@ button {
 
 .page-nav button {
   display: flex;
-  min-width: 76px;
+  width: fit-content;
+  min-width: max-content;
   flex: 0 0 auto;
   scroll-snap-align: start;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1px;
-  border-radius: 28px;
-  padding: 7px 12px 8px;
+  gap: 4px 1px;
+  border-radius: 32px;
+  padding: 7px 24px 8px;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1;
 }
 
 .page-nav button.active {
   color: white;
-  background: #000;
+  background: #1a1a1a;
+}
+
+.page-nav button:not(.active) {
+  color: #1a1a1a;
 }
 
 .page-nav button img {
@@ -298,8 +303,8 @@ button {
 }
 
 .page-nav button.in-depth-nav {
-  gap: 1px;
-  row-gap: 1px;
+  gap: 4px 1px;
+  row-gap: 4px;
   column-gap: 1px;
 }
 
@@ -317,10 +322,13 @@ button {
 
 .summary-card {
   position: relative;
+  width: calc(100% - 32px);
   height: 178px;
   overflow: hidden;
+  margin-right: 16px;
+  margin-left: 16px;
   border-radius: 22px;
-  padding: 22px 22px 16px;
+  padding: 22px 24px 16px;
 }
 
 .summary-content {
@@ -338,8 +346,9 @@ button {
 }
 
 .summary-card h2 {
+  color: #1a1a1a;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1;
 }
 
@@ -347,8 +356,9 @@ button {
   min-width: 100%;
   flex: 0 0 100%;
   scroll-snap-align: start;
-  font-size: 14px;
-  line-height: 1.45;
+  color: #595959;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .summary-dots {
@@ -358,20 +368,21 @@ button {
   left: 22px;
   display: flex;
   justify-content: center;
-  gap: 6px;
+  gap: 6px 8px;
 }
 
 .summary-dots span {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #c5c5c5;
 }
 
 .summary-dots span.active {
-  width: 18px;
+  width: 24px;
+  height: 8px;
   border-radius: 99px;
-  background: #111;
+  background: #1a1a1a;
 }
 
 .story-section {
@@ -1124,8 +1135,8 @@ button {
   margin-right: 16px;
   margin-bottom: 16px;
   margin-left: 16px;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: 24px;
+  padding-left: 24px;
   padding-top: 8px;
   padding-bottom: 16px;
 }
@@ -1240,7 +1251,7 @@ button {
 }
 
 .live-update-card > p {
-  color: #1a1a1a;
+  color: #595959;
   font-size: 16px;
 }
 
@@ -1664,6 +1675,17 @@ button {
 
   .hero-title {
     font-size: 48px;
+  }
+
+  .page-nav {
+    justify-content: center;
+    gap: 4px clamp(4px, calc(12vw - 68px), 16px);
+    overflow-x: visible;
+  }
+
+  .page-nav button {
+    padding-right: clamp(12px, calc(12vw - 60px), 24px);
+    padding-left: clamp(12px, calc(12vw - 60px), 24px);
   }
 
   .device-frame .audio-player {
