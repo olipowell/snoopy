@@ -44,7 +44,6 @@ export const liveArticle: LiveArticle = {
       id: "cumbrian-coast",
       time: "09:01",
       headline: "Storm Boelo batters Cumbrian coastal communities overnight",
-      author: { name: "BBC News", image: "feeaf.png" },
       paragraphs: [
         "In Maryport on the West Cumbrian coast, communities are seeing the effects of a night of strong winds, localised flooding and travel disruption.",
         "Several red flood warnings are in place along the coast. Floodgates have been closed to help protect waterfronts, homes and businesses, while gusts approached 78mph at nearby St Bees Head.",
@@ -67,7 +66,6 @@ export const liveArticle: LiveArticle = {
       time: "08:41",
       headline:
         "Heavy flooding disrupts Cardiff train services as warnings issued across Wales",
-      author: { name: "BBC Wales", image: "f2dfd.png" },
       paragraphs: [
         "Transport for Wales says services between Cardiff Central and Pontyclun may be delayed because of flooding on the railway.",
         "Passengers are being asked to check before travelling as weather warnings remain in place.",
@@ -88,7 +86,6 @@ export const liveArticle: LiveArticle = {
       id: "scotland-power",
       time: "08:14",
       headline: "Power cuts reported in 57 places across Scotland",
-      author: { name: "BBC Scotland", image: "5716f.png" },
       paragraphs: [
         "The power network company SSEN is logging dozens of unplanned outages, mainly in the Western Isles, the west Highlands, and Argyll and Bute.",
         "There are also reports of flooding along the Clyde coast in Largs and Saltcoats.",
@@ -124,7 +121,6 @@ export const liveArticle: LiveArticle = {
       time: "07:42",
       headline:
         "Winds not easing until overnight in the north as Scotland faces more heavy rain",
-      author: { name: "BBC Weather", image: "ad18a.png" },
       paragraphs: [
         "The strongest winds have generally been across north-western parts of the UK, particularly Scotland, while an 85mph gust was also recorded on the Isle of Wight.",
         "Winds should ease in southern areas during the afternoon, but northern areas will remain exposed until overnight and Scotland has more heavy rain to come.",

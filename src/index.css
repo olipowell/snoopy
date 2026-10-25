@@ -1129,30 +1129,94 @@ button {
   text-underline-offset: 3px;
 }
 
-.live-update-card .author-row {
-  margin-bottom: 18px;
-}
-
-.live-update-time {
+.live-update-author {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #555;
-  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
-  font-size: 12px;
+  margin-bottom: 18px;
+  font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
+  font-size: 13px;
 }
 
-.live-update-time .live-dot {
-  width: 8px;
-  height: 8px;
+.live-update-author img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.live-update-card h2 {
-  margin-top: 10px;
+.live-update-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.live-update-heading h2 {
+  min-width: 0;
+  flex: 1;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
   font-size: 23px;
   line-height: 1.18;
   letter-spacing: -0.25px;
+}
+
+.update-actions {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+}
+
+.update-actions-trigger {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.update-actions-trigger:hover,
+.update-actions-trigger[aria-expanded="true"] {
+  background: #eeeeef;
+}
+
+.update-actions-trigger img {
+  width: 22px;
+  height: 22px;
+}
+
+.update-actions-menu {
+  position: absolute;
+  z-index: 4;
+  top: 42px;
+  right: 0;
+  width: 208px;
+  overflow: hidden;
+  border: 1px solid #dedede;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+}
+
+.update-actions-menu button,
+.update-actions-menu a {
+  display: block;
+  width: 100%;
+  padding: 13px 15px;
+  font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.update-actions-menu button:hover,
+.update-actions-menu button:focus-visible,
+.update-actions-menu a:hover,
+.update-actions-menu a:focus-visible {
+  background: #f1f1f2;
+}
+
+.update-actions-menu > * + * {
+  border-top: 1px solid #ececec;
 }
 
 .live-update-card > p,
@@ -1173,8 +1237,6 @@ button {
 
 .live-update-card .meta {
   margin-top: 20px;
-  padding-top: 14px;
-  border-top: 1px solid #e1e1e1;
 }
 
 .final-card {

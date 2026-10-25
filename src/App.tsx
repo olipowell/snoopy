@@ -399,6 +399,91 @@ function TextCard({ children }: { children: React.ReactNode }) {
   return <section className="card text-card">{children}</section>
 }
 
+function UpdateActions({ update }: { update: LiveUpdate }) {
+  const [open, setOpen] = useState(false)
+  const [copied, setCopied] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+
+    const closeOnOutsideClick = (event: PointerEvent) => {
+      if (!menuRef.current?.contains(event.target as Node)) setOpen(false)
+    }
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false)
+    }
+
+    document.addEventListener("pointerdown", closeOnOutsideClick)
+    document.addEventListener("keydown", closeOnEscape)
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideClick)
+      document.removeEventListener("keydown", closeOnEscape)
+    }
+  }, [open])
+
+  const updateUrl = () =>
+    new URL(`#${update.id}`, window.location.href).toString()
+
+  const copyLink = async () => {
+    await navigator.clipboard.writeText(updateUrl())
+    setCopied(true)
+  }
+
+  const shareUpdate = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: update.headline,
+          url: updateUrl(),
+        })
+        setOpen(false)
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") return
+        await copyLink()
+      }
+      return
+    }
+    await copyLink()
+  }
+
+  return (
+    <div className="update-actions" ref={menuRef}>
+      <button
+        type="button"
+        className="update-actions-trigger"
+        aria-label={`More options for ${update.headline}`}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => {
+          setCopied(false)
+          setOpen((current) => !current)
+        }}
+      >
+        <img src={`${A}/b460c.svg`} alt="" />
+      </button>
+      {open && (
+        <div className="update-actions-menu" role="menu">
+          <button type="button" role="menuitem" onClick={shareUpdate}>
+            Share update
+          </button>
+          <button type="button" role="menuitem" onClick={copyLink}>
+            {copied ? "Link copied" : "Copy link"}
+          </button>
+          <a
+            role="menuitem"
+            href={liveArticle.sourceUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open BBC live coverage
+          </a>
+        </div>
+      )}
+    </div>
+  )
+}
+
 function LiveUpdateCard({
   update,
   isLast,
@@ -412,13 +497,15 @@ function LiveUpdateCard({
       id={update.id}
     >
       {update.author && (
-        <Author image={update.author.image} name={update.author.name} />
+        <div className="live-update-author">
+          <img src={`${A}/${update.author.image}`} alt="" />
+          <span>{update.author.name}</span>
+        </div>
       )}
-      <div className="live-update-time">
-        <span className="live-dot" aria-hidden="true" />
-        <time>{update.time}</time>
+      <div className="live-update-heading">
+        <h2>{update.headline}</h2>
+        <UpdateActions update={update} />
       </div>
-      <h2>{update.headline}</h2>
       {update.paragraphs.map((paragraph) => (
         <p key={paragraph}>{paragraph}</p>
       ))}
@@ -429,7 +516,7 @@ function LiveUpdateCard({
           ))}
         </ul>
       )}
-      <Meta timestamp={`Posted at ${update.time}`} usefulCount={update.usefulCount} />
+      <Meta timestamp={update.time} usefulCount={update.usefulCount} />
     </section>
   )
 }
