@@ -1,0 +1,10 @@
+{
+  "description": "Experience a mobile-friendly, scrollable interface that showcases content with adjustable font sizes and interactive video overlays for engaging storytelling.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
