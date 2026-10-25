@@ -636,7 +636,7 @@ button {
 
 .sound-progress-ring circle {
   fill: none;
-  stroke: #f06424;
+  stroke: #fa6400;
   stroke-width: 7;
   stroke-linecap: round;
 }
