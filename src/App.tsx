@@ -999,7 +999,7 @@ export default function App() {
             alt="Your profile"
           />
           <img className="bbc-logo" src={`${A}/87f0f.svg`} alt="BBC" />
-          <button type="button" aria-label="Open menu">
+          <button type="button" aria-label="Open global navigation">
             <img src={`${A}/af46b.svg`} alt="" />
           </button>
         </header>
@@ -1013,9 +1013,9 @@ export default function App() {
               <button
                 type="button"
                 className="share-button"
-                aria-label="Share this story"
+                aria-label="More story options"
               >
-                <img src={`${A}/9adc7.svg`} alt="" />
+                <img src={`${A}/b460c.svg`} alt="" />
               </button>
             </div>
             <h1 className="hero-title">{liveArticle.headline}</h1>
