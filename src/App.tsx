@@ -1065,6 +1065,16 @@ export default function App() {
                 </svg>
                 <span>12,668 viewing</span>
               </span>
+              <span className="updated-item">
+                <img
+                  src={`${A}/8f0af.svg`}
+                  width="20"
+                  height="20"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span>2,852 discussing</span>
+              </span>
             </div>
             <div className="hero-media">
               <img
