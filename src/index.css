@@ -177,8 +177,8 @@ button {
 }
 
 .updated svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .updated-bolt {
@@ -1772,6 +1772,10 @@ button {
 }
 
 @media (max-width: 599px) {
+  .updated-detail {
+    display: none;
+  }
+
   .live-label {
     font-size: 16px;
   }
