@@ -80,8 +80,8 @@ button {
 }
 
 .site-header .profile {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   border-radius: 999px;
   object-fit: cover;
 }
@@ -279,8 +279,8 @@ button {
 }
 
 .page-nav button img {
-  width: 29px;
-  height: 29px;
+  width: 24px;
+  height: 24px;
 }
 
 .page-nav button.active img {
@@ -297,8 +297,6 @@ button {
 
 .page-nav button.in-depth-nav img {
   position: static;
-  width: 29px;
-  height: 29px;
   transform: none;
 }
 
@@ -1750,6 +1748,11 @@ button {
 
   .page-nav button {
     font-size: 14px;
+  }
+
+  .page-nav button img {
+    width: 32px;
+    height: 32px;
   }
 
   .story-avatars {
