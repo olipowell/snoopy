@@ -80,15 +80,15 @@ button {
 }
 
 .site-header .profile {
-  width: 34px;
-  height: 34px;
+  width: 24px;
+  height: 24px;
   border-radius: 999px;
   object-fit: cover;
 }
 
 .site-header .bbc-logo {
-  width: 76px;
-  height: auto;
+  width: auto;
+  height: 24px;
 }
 
 .site-header button {
@@ -99,8 +99,8 @@ button {
 }
 
 .site-header button img {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
 }
 
 .topper {
@@ -136,8 +136,8 @@ button {
 }
 
 .share-button img {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
 }
 
 .hero-title {
@@ -1187,8 +1187,8 @@ button {
 }
 
 .update-actions-trigger img {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
 }
 
 .update-actions-menu {
