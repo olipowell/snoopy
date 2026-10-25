@@ -237,7 +237,7 @@ button {
   width: 100%;
   align-items: center;
   justify-content: safe center;
-  gap: 4px clamp(4px, 2vw, 16px);
+  gap: 4px 0;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   padding: 24px 16px;
@@ -1744,6 +1744,10 @@ button {
 
   .hero-title {
     font-size: 48px;
+  }
+
+  .page-nav {
+    column-gap: clamp(0px, calc(4vw - 26px), 16px);
   }
 
   .page-nav button {
