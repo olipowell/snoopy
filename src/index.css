@@ -1108,7 +1108,6 @@ button {
   margin-top: 18px;
 }
 
-.live-intro-card,
 .live-update-card {
   margin-bottom: 14px;
   border-radius: 22px;
@@ -1124,21 +1123,6 @@ button {
 .live-update-card .reaction {
   gap: 5px 0;
   column-gap: 0;
-}
-
-.live-intro-card {
-  padding: 20px;
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-.live-intro-card a {
-  display: inline-block;
-  margin-top: 14px;
-  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
-  font-size: 13px;
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .live-update-author {

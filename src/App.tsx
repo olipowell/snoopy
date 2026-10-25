@@ -1102,17 +1102,6 @@ export default function App() {
                 </div>
               </section>
 
-              <section className="card live-intro-card">
-                <p>{liveArticle.description}</p>
-                <a
-                  href={liveArticle.sourceUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  View the original live coverage on BBC News
-                </a>
-              </section>
-
               {liveArticle.updates.map((update, index) => (
                 <LiveUpdateCard
                   key={update.id}

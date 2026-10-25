@@ -15,10 +15,8 @@ export type LiveArticle = {
   topic: string
   headline: string
   updatedLabel: string
-  description: string
   heroImage: string
   heroAlt: string
-  sourceUrl: string
   summaries: string[]
   updates: LiveUpdate[]
 }
@@ -28,11 +26,8 @@ export const liveArticle: LiveArticle = {
   headline:
     "Storm Boelo brings 85mph gusts and travel disruption with amber weather warnings in effect",
   updatedLabel: "Updated just now",
-  description:
-    "As the wet and windy weekend continues, trains are cancelled, fallen trees have closed roads, and ferry services are suspended.",
   heroImage: "storm-boelo-hero.jpg",
   heroAlt: "Waves breaking over a coastal road during Storm Boelo",
-  sourceUrl: "https://www.bbc.co.uk/news/live/ck8dzrlg27rdt",
   summaries: [
     "Storm Boelo has brought gusts of up to 85mph, with amber weather warnings still in force across parts of the UK",
     "Trains have been cancelled, roads closed by fallen trees and flooding, and ferry services suspended",
