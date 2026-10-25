@@ -1145,15 +1145,20 @@ button {
   object-fit: cover;
 }
 
-.live-update-heading {
+.live-update-toolbar {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-.live-update-heading h2 {
-  min-width: 0;
-  flex: 1;
+.live-update-toolbar time {
+  color: #555;
+  font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
+  font-size: 12px;
+}
+
+.live-update-card > h2 {
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
   font-size: 23px;
   line-height: 1.18;
@@ -1191,7 +1196,6 @@ button {
   right: 0;
   width: 208px;
   overflow: hidden;
-  border: 1px solid #dedede;
   border-radius: 14px;
   background: #fff;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
@@ -1215,10 +1219,6 @@ button {
   background: #f1f1f2;
 }
 
-.update-actions-menu > * + * {
-  border-top: 1px solid #ececec;
-}
-
 .live-update-card > p,
 .live-update-card > ul {
   margin-top: 14px;
@@ -1237,6 +1237,7 @@ button {
 
 .live-update-card .meta {
   margin-top: 20px;
+  justify-content: flex-end;
 }
 
 .final-card {

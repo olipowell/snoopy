@@ -351,11 +351,11 @@ function Meta({
 }: {
   dark?: boolean
   usefulCount: number
-  timestamp?: string
+  timestamp?: string | null
 }) {
   return (
     <div className={`meta ${dark ? "meta-dark" : ""}`}>
-      <span>{timestamp}</span>
+      {timestamp && <span>{timestamp}</span>}
       <Reaction dark={dark} initialCount={usefulCount} />
     </div>
   )
@@ -402,6 +402,7 @@ function TextCard({ children }: { children: React.ReactNode }) {
 function UpdateActions({ update }: { update: LiveUpdate }) {
   const [open, setOpen] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [reported, setReported] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -457,6 +458,7 @@ function UpdateActions({ update }: { update: LiveUpdate }) {
         aria-expanded={open}
         onClick={() => {
           setCopied(false)
+          setReported(false)
           setOpen((current) => !current)
         }}
       >
@@ -470,14 +472,13 @@ function UpdateActions({ update }: { update: LiveUpdate }) {
           <button type="button" role="menuitem" onClick={copyLink}>
             {copied ? "Link copied" : "Copy link"}
           </button>
-          <a
+          <button
+            type="button"
             role="menuitem"
-            href={liveArticle.sourceUrl}
-            target="_blank"
-            rel="noreferrer"
+            onClick={() => setReported(true)}
           >
-            Open BBC live coverage
-          </a>
+            {reported ? "Issue reported" : "Report an issue"}
+          </button>
         </div>
       )}
     </div>
@@ -502,10 +503,11 @@ function LiveUpdateCard({
           <span>{update.author.name}</span>
         </div>
       )}
-      <div className="live-update-heading">
-        <h2>{update.headline}</h2>
+      <div className="live-update-toolbar">
+        <time>{update.time}</time>
         <UpdateActions update={update} />
       </div>
+      <h2>{update.headline}</h2>
       {update.paragraphs.map((paragraph) => (
         <p key={paragraph}>{paragraph}</p>
       ))}
@@ -516,7 +518,7 @@ function LiveUpdateCard({
           ))}
         </ul>
       )}
-      <Meta timestamp={update.time} usefulCount={update.usefulCount} />
+      <Meta timestamp={null} usefulCount={update.usefulCount} />
     </section>
   )
 }
