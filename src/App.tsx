@@ -9,7 +9,7 @@ const navigation = [
   ["7298c.svg", "In Depth"],
   ["a6ac1.svg", "Verify"],
   ["2e0c5.svg", "Sounds"],
-  ["8f0af.svg", "Comments"],
+  ["8f0af.svg", "Your Voice"],
 ]
 
 const stories = [
@@ -849,7 +849,7 @@ function CommentsPage() {
       className="section-page comments-page"
       aria-labelledby="comments-title"
     >
-      <h2 id="comments-title">Comments</h2>
+      <h2 id="comments-title">Your Voice</h2>
       <div className="comments-feed">
         {comments.map((comment, index) => {
           const vote = commentVotes[index]
@@ -1084,7 +1084,9 @@ export default function App() {
               <button
                 key={label}
                 type="button"
-                className={`${activeNav === label ? "active" : ""} ${
+                className={`${activeNav === label ? "active" : ""} nav-${label
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")} ${
                   label === "In Depth" ? "in-depth-nav" : ""
                 }`}
                 onClick={() => setActiveNav(label)}

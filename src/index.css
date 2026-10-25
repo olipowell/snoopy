@@ -306,6 +306,26 @@ button {
   background: #008080;
 }
 
+.page-nav button.active.nav-videos {
+  background: #fe59aa;
+}
+
+.page-nav button.active.nav-in-depth {
+  background: #eb0000;
+}
+
+.page-nav button.active.nav-verify {
+  background: #0000ff;
+}
+
+.page-nav button.active.nav-sounds {
+  background: #fa6400;
+}
+
+.page-nav button.active.nav-your-voice {
+  background: #963ce1;
+}
+
 .page-nav button:not(.active) {
   color: #1a1a1a;
 }
