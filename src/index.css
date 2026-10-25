@@ -1700,6 +1700,11 @@ button {
     place-items: center;
   }
 
+  .avatar-frame {
+    width: 76px;
+    height: 76px;
+  }
+
   .device-frame .audio-player {
     max-width: 676px;
   }
