@@ -1131,6 +1131,12 @@ button {
   column-gap: 0;
 }
 
+.live-update-card .reaction span {
+  color: #757575;
+  font-size: 14px;
+  line-height: 14px;
+}
+
 .live-update-author {
   display: flex;
   align-items: center;
@@ -1155,15 +1161,17 @@ button {
 }
 
 .live-update-toolbar time {
-  color: #555;
+  color: #757575;
   font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 14px;
 }
 
 .live-update-card > h2 {
+  color: #1a1a1a;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
-  font-size: 23px;
-  line-height: 1.18;
+  font-size: 24px;
+  line-height: 32px;
   letter-spacing: -0.25px;
 }
 
@@ -1224,8 +1232,16 @@ button {
 .live-update-card > p,
 .live-update-card > ul {
   margin-top: 14px;
-  font-size: 14px;
   line-height: 1.5;
+}
+
+.live-update-card > p {
+  color: #1a1a1a;
+  font-size: 16px;
+}
+
+.live-update-card > ul {
+  font-size: 14px;
 }
 
 .live-update-card > ul {
