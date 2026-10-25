@@ -1746,10 +1746,6 @@ button {
     font-size: 48px;
   }
 
-  .page-nav {
-    column-gap: clamp(0px, calc(4vw - 26px), 16px);
-  }
-
   .page-nav button {
     font-size: 14px;
   }
@@ -1784,6 +1780,12 @@ button {
 
   .device-frame .audio-player {
     max-width: 676px;
+  }
+}
+
+@media (min-width: 764px) {
+  .page-nav {
+    column-gap: 16px;
   }
 }
 
