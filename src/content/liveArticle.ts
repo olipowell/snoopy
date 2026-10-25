@@ -22,7 +22,7 @@ export type LiveArticle = {
 }
 
 export const liveArticle: LiveArticle = {
-  topic: "UK Weather",
+  topic: "Weather",
   headline:
     "Storm Boelo brings 85mph gusts and travel disruption with amber weather warnings in effect",
   updatedLabel: "Updated just now",
