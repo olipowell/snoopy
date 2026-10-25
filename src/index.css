@@ -1349,9 +1349,17 @@ button {
   width: 100%;
   padding: 13px 15px;
   font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
-  font-size: 13px;
-  line-height: 1.2;
   text-align: left;
+}
+
+.update-actions-menu button {
+  border: none;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.update-actions-menu button:not(:last-child) {
+  border-bottom: 2px solid #dedede;
 }
 
 .update-actions-menu button:hover,
