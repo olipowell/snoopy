@@ -176,6 +176,10 @@ button {
   gap: 6px;
 }
 
+.updated-stat {
+  font-size: 14px;
+}
+
 .updated svg {
   width: 24px;
   height: 24px;
@@ -1359,6 +1363,10 @@ button {
   font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
   font-size: 14px;
   line-height: 14px;
+}
+
+.live-update-footer > .highlighted-update-time {
+  color: #008080;
 }
 
 .live-update-card > h2 {
