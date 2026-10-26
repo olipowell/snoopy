@@ -620,7 +620,12 @@ function InlineComments({
       {comments.length > 0 && (
         <ol className="inline-comments-list">
           {comments.map((comment) => (
-            <li key={comment.id}>
+            <li
+              key={comment.id}
+              className={
+                comment.author === "You" ? "current-user-comment" : undefined
+              }
+            >
               <img src={`${A}/${comment.avatar}`} alt="" />
               <div>
                 <div className="inline-comment-meta">
@@ -650,6 +655,7 @@ function LiveUpdateCard({
   )
   const canComment = !update.comments?.length
   const latestComment = comments[0]
+  const isLatestCommentByCurrentUser = latestComment?.author === "You"
   const threadId = `${update.id}-comments`
 
   const addComment = (text: string) => {
@@ -729,7 +735,9 @@ function LiveUpdateCard({
         <div className="latest-comment-container">
           <button
             type="button"
-            className="latest-comment"
+            className={`latest-comment ${
+              isLatestCommentByCurrentUser ? "current-user-comment" : ""
+            }`}
             onClick={() => setCommentsOpen((current) => !current)}
             aria-controls={threadId}
             aria-expanded={commentsOpen}

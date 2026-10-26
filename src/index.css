@@ -1304,6 +1304,7 @@ button {
 
 .live-update-card#more-rain-and-strong-winds {
   width: calc(100% - 48px);
+  margin-top: 0;
   margin-right: 24px;
   margin-bottom: 24px;
   margin-left: 24px;
@@ -1555,6 +1556,11 @@ button {
   white-space: nowrap;
 }
 
+.latest-comment.current-user-comment .latest-comment-time,
+.latest-comment.current-user-comment .latest-comment-text {
+  color: rgb(117, 0, 235);
+}
+
 .inline-comments {
   margin-top: 18px;
   border-top: 1px solid #dedede;
@@ -1763,11 +1769,24 @@ button {
   line-height: 14px;
 }
 
+.inline-comments-list .current-user-comment .inline-comment-meta span {
+  color: rgb(117, 0, 235);
+  font-size: 14px;
+}
+
+.inline-comments-list .current-user-comment .inline-comment-meta time {
+  font-size: 12px;
+}
+
 .inline-comments-list p {
   margin-top: 4px;
   color: #595959;
   font-size: 14px;
   line-height: 20px;
+}
+
+.inline-comments-list .current-user-comment p {
+  color: rgb(117, 0, 235);
 }
 
 .final-card {
