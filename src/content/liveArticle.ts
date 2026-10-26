@@ -6,7 +6,8 @@ export type LiveUpdate = {
   bullets?: string[]
   author?: {
     name: string
-    image: string
+    role?: string
+    image?: string
   }
   usefulCount: number
 }
@@ -23,8 +24,7 @@ export type LiveArticle = {
 
 export const liveArticle: LiveArticle = {
   topic: "Weather",
-  headline:
-    "Storm Boelo brings 85mph gusts and travel disruption with amber weather warnings in effect",
+  headline: "Storm Boelo batters Scotland and causes chaos across UK",
   updatedLabel: "Updated just now",
   heroImage: "storm-boelo-hero.jpg",
   heroAlt: "Waves breaking over a coastal road during Storm Boelo",
@@ -36,103 +36,141 @@ export const liveArticle: LiveArticle = {
   ],
   updates: [
     {
-      id: "cumbrian-coast",
-      time: "09:01",
-      headline: "Storm Boelo batters Cumbrian coastal communities overnight",
+      id: "more-rain-and-strong-winds",
+      time: "19:32",
+      headline: "More rain and strong winds on the way",
+      author: {
+        name: "Annie Flury",
+        role: "BBC Weather",
+      },
       paragraphs: [
-        "In Maryport on the West Cumbrian coast, communities are seeing the effects of a night of strong winds, localised flooding and travel disruption.",
-        "Several red flood warnings are in place along the coast. Floodgates have been closed to help protect waterfronts, homes and businesses, while gusts approached 78mph at nearby St Bees Head.",
+        "We're ending our live coverage of Storm Boelo, but the unsettled weather remains - and there's more to come.",
+        "While Storm Boelo will move away overnight, Monday morning will bring yet more rain to many parts of south-west England, Wales and Northern Ireland.",
+        "The rain will move quickly north-eastwards, reaching central, eastern and northern England, as well as most of Scotland, by around lunchtime.",
+        "Another deep area of low pressure is already approaching from the Atlantic. As this moves to the north-west of the country during Monday and Tuesday it will bring another dose of rain and gales.",
       ],
       usefulCount: 184,
     },
     {
-      id: "england-flood-warnings",
-      time: "08:53",
-      headline:
-        "Flood warnings in place across north of England as some urged to act",
+      id: "storm-boelo-latest",
+      time: "19:15",
+      headline: "Storm Boelo batters Scotland and causes chaos across UK",
+      author: {
+        name: "Rachel Flynn",
+        role: "Live reporter",
+        image: "authors/rachel-flynn.webp",
+      },
       paragraphs: [
-        "Ten flood warnings and 66 flood alerts are active in England. A warning is the more serious category and means flooding is expected.",
-        "People in affected areas are being advised to follow local guidance and begin acting on their flood plans where necessary.",
+        "Storm Boelo brought chaos to the UK on Sunday, with a top wind gust of 85mph recorded in the Scottish village of Machrihanish.",
+        "Scotland bore the brunt. An amber wind warning remained in place across large parts of Scotland and northern England, while a 60-year-old man was killed after being hit by a tree near Castle Douglas.",
+        "Large parts of the UK and the island of Ireland experienced strong winds and heavy rainfall, with widespread power outages.",
+        "The Energy Networks Association said 161,400 properties remained without power at 15:00 GMT.",
       ],
       usefulCount: 129,
     },
     {
-      id: "cardiff-trains",
-      time: "08:41",
+      id: "scotrail-services",
+      time: "19:01",
       headline:
-        "Heavy flooding disrupts Cardiff train services as warnings issued across Wales",
+        "ScotRail says 'vast majority' of services to run on Monday - but warns to check before you travel",
+      author: {
+        name: "Rachel Grant",
+        role: "BBC Scotland",
+      },
       paragraphs: [
-        "Transport for Wales says services between Cardiff Central and Pontyclun may be delayed because of flooding on the railway.",
-        "Passengers are being asked to check before travelling as weather warnings remain in place.",
+        'ScotRail faced a day of disruption across its routes, but says the "vast majority" of services were expected to run as normal on Monday.',
+        "Fallen trees and debris have been cleared from tracks, overhead lines repaired, and floods and power cuts tackled.",
+        "Network Rail says its teams will continue throughout the night to get the railway ready for Monday morning, but passengers should check their journeys before setting off.",
       ],
       usefulCount: 96,
     },
     {
-      id: "power-cuts",
-      time: "08:25",
-      headline: "Thousands without electricity across island of Ireland",
+      id: "wind-gusts-and-heavy-rain",
+      time: "18:51",
+      headline: "Very high wind gusts and heavy rain for all UK nations today",
+      author: {
+        name: "Annie Flury",
+        role: "BBC Weather",
+      },
       paragraphs: [
-        "Thousands of homes are without power as Storm Boelo crosses the island of Ireland, with warnings still covering parts of Northern Ireland and County Donegal.",
-        "Among the areas most affected are Springfield, Bushmills and Milford, where network operators are working to restore supplies.",
+        "The ferocious winds haven't abated as the day has gone on and all nations of the UK have experienced some very high wind gusts along with heavy rain.",
+        "The biggest figures recorded in Scotland were 85mph gusts in Machrihanish and 131mm of rain at Cluanie Inn in the Highlands.",
+        "In England, 85mph gusts were recorded at the Needles on the Isle of Wight, while 115mm of rain fell at White Barrow in Wiltshire.",
       ],
       usefulCount: 142,
     },
     {
-      id: "scotland-power",
-      time: "08:14",
-      headline: "Power cuts reported in 57 places across Scotland",
+      id: "properties-without-power",
+      time: "18:36",
+      headline:
+        "More than 160,000 properties without power Sunday afternoon, industry body says",
       paragraphs: [
-        "The power network company SSEN is logging dozens of unplanned outages, mainly in the Western Isles, the west Highlands, and Argyll and Bute.",
-        "There are also reports of flooding along the Clyde coast in Largs and Saltcoats.",
+        "Latest data from the Energy Networks Association shows that 838,700 properties across the UK have been affected by power cuts during Storm Boelo and Storm Austen.",
+        "The association, which represents operators in the UK and Ireland, says 161,400 properties remained without power at 15:00 GMT.",
       ],
       usefulCount: 118,
     },
     {
-      id: "travel-routes",
-      time: "08:02",
-      headline: "Multiple train and ferry routes disrupted because of storm",
+      id: "police-scotland-warning",
+      time: "18:31",
+      headline:
+        "'Remain focused and vigilant' with further disruption expected, Police Scotland say",
+      author: {
+        name: "Rachel Grant",
+        role: "BBC Scotland",
+      },
       paragraphs: [
-        "National Rail says the storm is affecting several operators and routes. Ferry services are also disrupted as high winds and rough seas continue.",
-      ],
-      bullets: [
-        "Avanti West Coast advises passengers not to travel north of Preston",
-        "LNER advises against travel between Edinburgh and Aberdeen",
-        "Passengers should check their journey before setting off",
+        'Police Scotland have advised people to "remain focused and vigilant" and consider whether journeys are "really necessary".',
+        "A high risk of disruption remained, with a number of roads closed because of debris and fallen trees.",
+        "Police attended incidents across the country, particularly in the south-west of Scotland, and helped 15 people stuck at a flooded caravan park in Ballantrae.",
       ],
       usefulCount: 207,
     },
     {
-      id: "rainfall",
-      time: "07:54",
-      headline: "Almost 7cm of rain fell in 24 hours in some parts of UK",
+      id: "mid-kelton-flooding",
+      time: "18:18",
+      headline: "Flooded roads and tree debris near where man killed",
+      author: {
+        name: "Nichola Rutherford",
+        role: "Reporting from Mid Kelton",
+        image: "authors/nichola-rutherford.webp",
+      },
       paragraphs: [
-        "Rain fell across the whole of the UK at some point on Saturday, with the wettest locations recording close to 7cm in 24 hours.",
-        "Saturated ground is increasing the risk of surface-water flooding and disruption in areas receiving further showers.",
+        "A 60-year-old man died after being hit by a tree on a minor road near Mid Kelton in Dumfries and Galloway.",
+        "The road into the rural hamlet was closed, with flooding and tree debris reported on roads around Castle Douglas.",
+        "There have been reports of trees blocking roads across the region, but the tragedy in Mid Kelton will come as a shock to local people.",
       ],
       usefulCount: 83,
     },
     {
-      id: "forecast",
-      time: "07:42",
-      headline:
-        "Winds not easing until overnight in the north as Scotland faces more heavy rain",
+      id: "dumbarton-flooding",
+      time: "18:08",
+      headline: "Dumbarton High Street counts the cost from severe flooding",
+      author: {
+        name: "Shiona McCallum",
+        role: "Reporting from Dumbarton",
+        image: "authors/shiona-mccallum.webp",
+      },
       paragraphs: [
-        "The strongest winds have generally been across north-western parts of the UK, particularly Scotland, while an 85mph gust was also recorded on the Isle of Wight.",
-        "Winds should ease in southern areas during the afternoon, but northern areas will remain exposed until overnight and Scotland has more heavy rain to come.",
+        "Many shops and cafés on Dumbarton High Street are closed because of the storm, with workers already beginning the clean-up at some businesses.",
+        "Wet leaves, bottles and boxes lie scattered across the floor at Holland & Barrett, while muddy water covers the aisles at Boots.",
+        "Storm Boelo has caused serious damage here, and it will be some time before these businesses can get back to normal.",
       ],
       usefulCount: 231,
     },
     {
-      id: "weather-warnings",
-      time: "07:15",
-      headline: "What you need to know about UK weather warnings",
+      id: "dog-charity-flood",
+      time: "17:49",
+      headline: "Clean-up at dog charity after 'terrifying' flood",
+      author: {
+        name: "Liz Copper",
+        role: "Reporting from Kidsgrove",
+        image: "authors/liz-copper.webp",
+      },
       paragraphs: [
-        "The Met Office issues yellow, amber and red warnings when dangerous weather is forecast. The level reflects both the expected impact and how likely it is to happen.",
-      ],
-      bullets: [
-        "Yellow: weather may cause some disruption",
-        "Amber: disruption is likely and conditions may pose a risk",
-        "Red: dangerous weather is expected and action should be taken",
+        "A clean-up is under way at a dog rescue charity in north Staffordshire after its kennels flooded during Storm Austen, which swept through before Storm Boelo.",
+        "Greyhound Gap, near Kidsgrove, cares for nearly 50 dogs, but 15 had to be evacuated and moved to other kennels on Friday.",
+        'Assistant manager Sarah Partridge says staff were "fantastic", moving dogs into vehicles and spare kennels as the water rose.',
       ],
       usefulCount: 312,
     },

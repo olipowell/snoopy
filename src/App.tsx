@@ -516,8 +516,13 @@ function LiveUpdateCard({
     >
       {update.author && (
         <div className="live-update-author">
-          <img src={`${A}/${update.author.image}`} alt="" />
-          <span>{update.author.name}</span>
+          {update.author.image && (
+            <img src={`${A}/${update.author.image}`} alt="" />
+          )}
+          <span className="live-update-author-copy">
+            <span className="live-update-author-name">{update.author.name}</span>
+            {update.author.role && <span>{update.author.role}</span>}
+          </span>
         </div>
       )}
       <div className="live-update-toolbar">
