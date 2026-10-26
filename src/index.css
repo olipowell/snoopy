@@ -256,6 +256,11 @@ button {
   animation: live-pulse 1.6s ease-out infinite;
 }
 
+.hero-media .live-pill .hero-live-dot {
+  width: 20px;
+  height: 20px;
+}
+
 @keyframes live-pulse {
   70% {
     box-shadow: 0 0 0 var(--live-pulse-radius) rgba(0, 229, 229, 0);

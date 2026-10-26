@@ -1227,7 +1227,10 @@ export default function App() {
                 alt={liveArticle.heroAlt}
               />
               <div className="live-pill">
-                <span className="live-dot" aria-hidden="true" />
+                <span
+                  className="live-dot hero-live-dot"
+                  aria-hidden="true"
+                />
                 <span className="live-label">Live</span>
               </div>
             </div>
