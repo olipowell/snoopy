@@ -1741,6 +1741,10 @@ button {
   border-top: 1px solid #eeeeef;
 }
 
+.inline-comments-list li.selected-comment-no-divider {
+  border-top: 0;
+}
+
 .inline-comments-list li > img {
   width: 32px;
   height: 32px;

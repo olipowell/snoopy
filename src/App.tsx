@@ -622,9 +622,12 @@ function InlineComments({
           {comments.map((comment) => (
             <li
               key={comment.id}
-              className={
-                comment.author === "You" ? "current-user-comment" : undefined
-              }
+              className={[
+                comment.author === "You" ? "current-user-comment" : "",
+                comment.text === "hello" ? "selected-comment-no-divider" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
               <img src={`${A}/${comment.avatar}`} alt="" />
               <div>
