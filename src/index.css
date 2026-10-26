@@ -1369,6 +1369,10 @@ button {
   line-height: 14px;
 }
 
+.live-update-footer > .selected-update-time {
+  line-height: 24px;
+}
+
 .live-update-card > h2 {
   margin-top: 0;
   color: #1a1a1a;
@@ -1498,7 +1502,7 @@ button {
   min-width: 0;
   max-width: 100%;
   align-items: center;
-  gap: 9px 8px;
+  gap: 9px 12px;
   text-align: left;
 }
 
@@ -1516,15 +1520,15 @@ button {
   display: flex;
   min-width: 0;
   align-items: baseline;
-  gap: 2px 16px;
+  gap: 2px 12px;
 }
 
 .latest-comment-time {
   flex: 0 0 auto;
   color: #008080;
-  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
+  font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
   font-size: 14px;
-  line-height: 14px;
+  line-height: 24px;
 }
 
 .latest-comment-text {
@@ -1534,7 +1538,7 @@ button {
   overflow: hidden;
   color: #757575;
   font-size: 14px;
-  line-height: 14px;
+  line-height: 24px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
