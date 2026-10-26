@@ -599,10 +599,20 @@ function LiveUpdateCard({
       <div className="live-update-toolbar">
         {update.author ? (
           <div className="live-update-author">
-            <img
-              src={`${A}/${update.author.image ?? "8f0af.svg"}`}
-              alt=""
-            />
+            {update.author.image ? (
+              <img
+                className="live-update-author-avatar"
+                src={`${A}/${update.author.image}`}
+                alt=""
+              />
+            ) : (
+              <span
+                className="live-update-author-avatar live-update-author-placeholder"
+                aria-hidden="true"
+              >
+                {update.author.name.trim().charAt(0).toUpperCase()}
+              </span>
+            )}
             <span className="live-update-author-name">
               {update.author.name}
             </span>

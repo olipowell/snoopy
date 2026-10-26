@@ -1322,12 +1322,25 @@ button {
   line-height: 24px;
 }
 
-.live-update-author img {
+.live-update-author-avatar {
   width: 32px;
   height: 32px;
   flex: 0 0 32px;
   border-radius: 32px;
+}
+
+.live-update-author img {
   object-fit: cover;
+}
+
+.live-update-author-placeholder {
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: #595959;
+  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1;
 }
 
 .live-update-toolbar {
