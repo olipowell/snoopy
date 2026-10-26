@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react"
-import { liveArticle, type LiveUpdate } from "./content/liveArticle"
+import {
+  liveArticle,
+  type InlineComment,
+  type LiveUpdate,
+} from "./content/liveArticle"
 
 const A = `${import.meta.env.BASE_URL}assets`
 
@@ -335,6 +339,14 @@ function LightbulbIcon() {
   )
 }
 
+function CommentIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v7.5a2.25 2.25 0 0 1-2.25 2.25H11l-4.75 3v-3h-1A2.25 2.25 0 0 1 3 14.25v-7.5A2.25 2.25 0 0 1 5.25 4.5Z" />
+    </svg>
+  )
+}
+
 function Reaction({
   dark = false,
   initialCount,
@@ -365,15 +377,42 @@ function Meta({
   dark = false,
   usefulCount,
   timestamp = "3 mins ago",
+  showComments = false,
+  commentCount = 0,
+  commentsOpen = false,
+  onCommentsClick,
 }: {
   dark?: boolean
   usefulCount: number
   timestamp?: string | null
+  showComments?: boolean
+  commentCount?: number
+  commentsOpen?: boolean
+  onCommentsClick?: () => void
 }) {
   return (
     <div className={`meta ${dark ? "meta-dark" : ""}`}>
       {timestamp && <span>{timestamp}</span>}
-      <Reaction dark={dark} initialCount={usefulCount} />
+      <div className="meta-actions">
+        {showComments && (
+          <button
+            type="button"
+            className="comment-trigger"
+            onClick={onCommentsClick}
+            disabled={!onCommentsClick}
+            aria-label={
+              commentCount
+                ? `${commentsOpen ? "Close" : "Open"} ${commentCount} comments`
+                : "No comments on this update"
+            }
+            aria-expanded={commentCount ? commentsOpen : undefined}
+          >
+            <CommentIcon />
+            {commentCount > 0 && <span>{commentCount}</span>}
+          </button>
+        )}
+        <Reaction dark={dark} initialCount={usefulCount} />
+      </div>
     </div>
   )
 }
@@ -502,6 +541,44 @@ function UpdateActions({ update }: { update: LiveUpdate }) {
   )
 }
 
+function InlineComments({
+  comments,
+  threadId,
+}: {
+  comments: InlineComment[]
+  threadId: string
+}) {
+  return (
+    <section
+      className="inline-comments"
+      id={threadId}
+      aria-label={`Comments on this update (${comments.length})`}
+    >
+      <div className="inline-comments-header">
+        <div>
+          <h3>Comments</h3>
+          <span>{comments.length} responses</span>
+        </div>
+        <span className="comments-closed">Comments closed</span>
+      </div>
+      <ol className="inline-comments-list">
+        {comments.map((comment) => (
+          <li key={comment.id}>
+            <img src={`${A}/${comment.avatar}`} alt="" />
+            <div>
+              <div className="inline-comment-meta">
+                <span>{comment.author}</span>
+                <time>{comment.timestamp}</time>
+              </div>
+              <p>{comment.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}
+
 function LiveUpdateCard({
   update,
   isLast,
@@ -509,6 +586,11 @@ function LiveUpdateCard({
   update: LiveUpdate
   isLast: boolean
 }) {
+  const [commentsOpen, setCommentsOpen] = useState(false)
+  const comments = update.comments ?? []
+  const latestComment = comments[0]
+  const threadId = `${update.id}-comments`
+
   return (
     <section
       className={`card live-update-card ${isLast ? "final-card" : ""}`}
@@ -549,7 +631,40 @@ function LiveUpdateCard({
           ))}
         </ul>
       )}
-      <Meta timestamp={null} usefulCount={update.usefulCount} />
+      <div className="live-update-footer">
+        {latestComment && (
+          <button
+            type="button"
+            className="latest-comment"
+            onClick={() => setCommentsOpen((current) => !current)}
+            aria-controls={threadId}
+            aria-expanded={commentsOpen}
+          >
+            <img src={`${A}/${latestComment.avatar}`} alt="" />
+            <span>
+              <span className="latest-comment-author">
+                {latestComment.author}
+              </span>
+              <span className="latest-comment-text">{latestComment.text}</span>
+            </span>
+          </button>
+        )}
+        <Meta
+          timestamp={null}
+          usefulCount={update.usefulCount}
+          showComments
+          commentCount={comments.length}
+          commentsOpen={commentsOpen}
+          onCommentsClick={
+            comments.length
+              ? () => setCommentsOpen((current) => !current)
+              : undefined
+          }
+        />
+      </div>
+      {commentsOpen && (
+        <InlineComments comments={comments} threadId={threadId} />
+      )}
     </section>
   )
 }

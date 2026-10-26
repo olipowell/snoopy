@@ -1,3 +1,11 @@
+export type InlineComment = {
+  id: string
+  author: string
+  avatar: string
+  timestamp: string
+  text: string
+}
+
 export type LiveUpdate = {
   id: string
   time: string
@@ -9,6 +17,7 @@ export type LiveUpdate = {
     role?: string
     image?: string
   }
+  comments?: InlineComment[]
   usefulCount: number
 }
 
@@ -48,6 +57,92 @@ export const liveArticle: LiveArticle = {
         "While Storm Boelo will move away overnight, Monday morning will bring yet more rain to many parts of south-west England, Wales and Northern Ireland.",
         "The rain will move quickly north-eastwards, reaching central, eastern and northern England, as well as most of Scotland, by around lunchtime.",
         "Another deep area of low pressure is already approaching from the Atlantic. As this moves to the north-west of the country during Monday and Tuesday it will bring another dose of rain and gales.",
+      ],
+      comments: [
+        {
+          id: "comment-1",
+          author: "Maya Thompson",
+          avatar: "profile-avatar.png",
+          timestamp: "2 mins ago",
+          text: "The Tuesday warning is useful to know about. I hope the areas already flooded get a chance to recover first.",
+        },
+        {
+          id: "comment-2",
+          author: "Alex Morgan",
+          avatar: "49a3a.png",
+          timestamp: "6 mins ago",
+          text: "The wind has eased where I am, but there is still a lot of standing water on the roads.",
+        },
+        {
+          id: "comment-3",
+          author: "Sophie Rahman",
+          avatar: "3cc5a.png",
+          timestamp: "9 mins ago",
+          text: "Thanks for keeping the forecast clear and in one place. The timing for Monday morning is especially helpful.",
+        },
+        {
+          id: "comment-4",
+          author: "Daniel Hughes",
+          avatar: "f2dfd.png",
+          timestamp: "12 mins ago",
+          text: "It would be good to see the warning area on a map alongside this update.",
+        },
+        {
+          id: "comment-5",
+          author: "Priya Shah",
+          avatar: "5716f.png",
+          timestamp: "16 mins ago",
+          text: "Our trains are running again this evening, although the station is still advising everyone to check before travelling.",
+        },
+        {
+          id: "comment-6",
+          author: "Tom Bennett",
+          avatar: "ad18a.png",
+          timestamp: "19 mins ago",
+          text: "The next area of low pressure sounds concerning after such a difficult weekend.",
+        },
+        {
+          id: "comment-7",
+          author: "Ellie Foster",
+          avatar: "ade29.png",
+          timestamp: "23 mins ago",
+          text: "We have family in south-west England, so the early Monday forecast is very useful.",
+        },
+        {
+          id: "comment-8",
+          author: "Marcus Green",
+          avatar: "feeaf.png",
+          timestamp: "27 mins ago",
+          text: "Conditions are much calmer on the coast now, but clean-up work is only just beginning.",
+        },
+        {
+          id: "comment-9",
+          author: "Hannah Cole",
+          avatar: "80216.png",
+          timestamp: "31 mins ago",
+          text: "Please keep the travel advice prominent if the rain moves north-east as forecast.",
+        },
+        {
+          id: "comment-10",
+          author: "Jamie Wilson",
+          avatar: "49a3a.png",
+          timestamp: "35 mins ago",
+          text: "The detail about warmer air in the south is interesting given how unsettled everything still feels.",
+        },
+        {
+          id: "comment-11",
+          author: "Amina Yusuf",
+          avatar: "3cc5a.png",
+          timestamp: "41 mins ago",
+          text: "Appreciate the update. Hoping power can be restored quickly for everyone still affected.",
+        },
+        {
+          id: "comment-12",
+          author: "Chris Walker",
+          avatar: "f2dfd.png",
+          timestamp: "48 mins ago",
+          text: "A difficult few days for communities across the country. Thanks to the crews working through the weather.",
+        },
       ],
       usefulCount: 184,
     },

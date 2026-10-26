@@ -1049,6 +1049,36 @@ button {
   font-size: 12px;
 }
 
+.meta-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comment-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: #757575;
+  font-family: "BBC Reith Sans:Regular", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.comment-trigger:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.comment-trigger svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
 .reaction {
   display: flex;
   align-items: center;
@@ -1421,6 +1451,156 @@ button {
 .live-update-card .meta {
   margin-top: 20px;
   justify-content: flex-end;
+}
+
+.live-update-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.live-update-footer .meta {
+  flex: 0 0 auto;
+  margin-top: 0;
+}
+
+.latest-comment {
+  display: flex;
+  min-width: 0;
+  max-width: calc(100% - 88px);
+  align-items: center;
+  gap: 9px;
+  text-align: left;
+}
+
+.latest-comment > img {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.latest-comment > span {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.latest-comment-author {
+  overflow: hidden;
+  color: #1a1a1a;
+  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.latest-comment-text {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #595959;
+  font-size: 13px;
+  line-height: 17px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.inline-comments {
+  margin-top: 18px;
+  border-top: 1px solid #dedede;
+  padding-top: 18px;
+}
+
+.inline-comments-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.inline-comments-header > div {
+  display: grid;
+  gap: 2px;
+}
+
+.inline-comments-header h3 {
+  color: #1a1a1a;
+  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.inline-comments-header > div > span {
+  color: #757575;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.comments-closed {
+  border-radius: 999px;
+  padding: 6px 9px;
+  color: #595959;
+  background: #eeeeef;
+  font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.inline-comments-list {
+  display: grid;
+  gap: 0;
+  margin-top: 16px;
+}
+
+.inline-comments-list li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  padding: 14px 0;
+}
+
+.inline-comments-list li + li {
+  border-top: 1px solid #eeeeef;
+}
+
+.inline-comments-list li > img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.inline-comment-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.inline-comment-meta span {
+  color: #1a1a1a;
+  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 17px;
+}
+
+.inline-comment-meta time {
+  flex: 0 0 auto;
+  color: #757575;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+.inline-comments-list p {
+  margin-top: 4px;
+  color: #595959;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .final-card {
