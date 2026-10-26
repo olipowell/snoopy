@@ -642,9 +642,6 @@ function LiveUpdateCard({
           >
             <img src={`${A}/${latestComment.avatar}`} alt="" />
             <span>
-              <span className="latest-comment-author">
-                {latestComment.author}
-              </span>
               <span className="latest-comment-text">{latestComment.text}</span>
             </span>
           </button>
