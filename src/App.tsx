@@ -632,15 +632,7 @@ function LiveUpdateCard({
         </ul>
       )}
       <div className="live-update-footer">
-        <time
-          className={
-            update.id === "more-rain-and-strong-winds"
-              ? "highlighted-update-time"
-              : undefined
-          }
-        >
-          {update.time}
-        </time>
+        <time>{update.time}</time>
         <Meta
           timestamp={null}
           usefulCount={update.usefulCount}

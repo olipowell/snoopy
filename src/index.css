@@ -1359,14 +1359,10 @@ button {
 }
 
 .live-update-footer > time {
-  color: #595959;
+  color: #008080;
   font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
   font-size: 14px;
   line-height: 14px;
-}
-
-.live-update-footer > .highlighted-update-time {
-  color: #008080;
 }
 
 .live-update-card > h2 {
