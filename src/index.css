@@ -1278,21 +1278,18 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 18px;
+  margin-top: 8px;
+  margin-bottom: 0;
   font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
-  font-size: 13px;
-}
-
-.live-update-author-copy {
-  display: grid;
-  gap: 2px;
-  color: #757575;
-  line-height: 1.2;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .live-update-author-name {
   color: #1a1a1a;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .live-update-author img {
@@ -1309,11 +1306,17 @@ button {
   margin-bottom: 0;
 }
 
-.live-update-toolbar time {
+.live-update-toolbar time,
+.live-update-timestamp {
   color: #757575;
   font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
   font-size: 14px;
   line-height: 14px;
+}
+
+.live-update-timestamp {
+  display: block;
+  margin-top: 8px;
 }
 
 .live-update-card > h2 {

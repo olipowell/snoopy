@@ -514,21 +514,24 @@ function LiveUpdateCard({
       className={`card live-update-card ${isLast ? "final-card" : ""}`}
       id={update.id}
     >
-      {update.author && (
-        <div className="live-update-author">
-          {update.author.image && (
-            <img src={`${A}/${update.author.image}`} alt="" />
-          )}
-          <span className="live-update-author-copy">
-            <span className="live-update-author-name">{update.author.name}</span>
-            {update.author.role && <span>{update.author.role}</span>}
-          </span>
-        </div>
-      )}
       <div className="live-update-toolbar">
-        <time>{update.time}</time>
+        {update.author ? (
+          <div className="live-update-author">
+            {update.author.image && (
+              <img src={`${A}/${update.author.image}`} alt="" />
+            )}
+            <span className="live-update-author-name">
+              {update.author.name}
+            </span>
+          </div>
+        ) : (
+          <time>{update.time}</time>
+        )}
         <UpdateActions update={update} />
       </div>
+      {update.author && (
+        <time className="live-update-timestamp">{update.time}</time>
+      )}
       <h2>{update.headline}</h2>
       {update.paragraphs.map((paragraph) => (
         <p key={paragraph}>{paragraph}</p>
