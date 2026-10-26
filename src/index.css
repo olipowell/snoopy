@@ -610,6 +610,12 @@ button {
   display: none;
 }
 
+.sounds-page .sound-stories::after {
+  width: 8px;
+  flex: 0 0 8px;
+  content: "";
+}
+
 .sound-stories button {
   display: flex;
   width: 122px;
