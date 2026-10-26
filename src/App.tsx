@@ -586,7 +586,11 @@ function InlineComments({
           </span>
         </div>
         {canComment ? (
-          <span className="comments-open">Join the conversation</span>
+          <span className="comments-open">
+            {threadId === "storm-boelo-latest-comments"
+              ? "No comments yet"
+              : "Join the conversation"}
+          </span>
         ) : (
           <span className="comments-closed">Comments closed</span>
         )}

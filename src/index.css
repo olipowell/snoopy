@@ -1678,14 +1678,27 @@ button {
   row-gap: 4px;
 }
 
+#storm-boelo-latest-comments {
+  border-top: 0;
+}
+
 #storm-boelo-latest-comments .inline-comments-header h3 {
   font-size: 24px;
 }
 
 #storm-boelo-latest-comments .inline-comments-header > div > span,
-#storm-boelo-latest-comments .comments-open,
 #storm-boelo-latest-comments .comment-composer-actions > span {
   font-size: 14px;
+}
+
+#storm-boelo-latest-comments .comments-open {
+  border-radius: 0;
+  padding: 0;
+  color: #757575;
+  background: transparent;
+  font-family: "BBC Reith Sans:Regular", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
 }
 
 #storm-boelo-latest-comments .comment-composer label {
