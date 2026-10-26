@@ -1083,6 +1083,14 @@ button {
   stroke-width: 1.8;
 }
 
+.comment-trigger.has-comments {
+  color: #7500eb;
+}
+
+.comment-trigger.has-comments svg path {
+  stroke: #7500eb;
+}
+
 .reaction {
   display: flex;
   align-items: center;
@@ -1469,7 +1477,7 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-top: 16px;
+  margin: 16px 0 0;
 }
 
 .live-update-footer .meta {
@@ -1480,7 +1488,7 @@ button {
 }
 
 .latest-comment-container {
-  margin-top: 16px;
+  margin: 16px 0 0;
   border-top: 1px solid #dedede;
   padding-top: 16px;
 }
@@ -1514,7 +1522,7 @@ button {
 .latest-comment-text {
   display: block;
   overflow: hidden;
-  color: #757575;
+  color: #7500eb;
   font-size: 14px;
   line-height: 17px;
   text-overflow: ellipsis;
