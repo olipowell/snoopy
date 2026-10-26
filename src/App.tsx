@@ -577,13 +577,16 @@ function InlineComments({
       <div className="inline-comments-header">
         <div>
           <h3>Comments</h3>
-          <span>
-            {comments.length
-              ? `${comments.length} ${
-                  comments.length === 1 ? "response" : "responses"
-                }`
-              : "No responses yet"}
-          </span>
+          {(comments.length > 0 ||
+            threadId !== "storm-boelo-latest-comments") && (
+            <span>
+              {comments.length
+                ? `${comments.length} ${
+                    comments.length === 1 ? "response" : "responses"
+                  }`
+                : "No responses yet"}
+            </span>
+          )}
         </div>
         {canComment ? (
           <span className="comments-open">
