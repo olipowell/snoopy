@@ -1465,7 +1465,7 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-top: 8px;
+  margin-top: 16px;
 }
 
 .live-update-footer .meta {
@@ -1476,7 +1476,7 @@ button {
 }
 
 .latest-comment-container {
-  margin-top: 8px;
+  margin-top: 16px;
   border-top: 1px solid #dedede;
   padding-top: 16px;
 }
