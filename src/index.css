@@ -1279,7 +1279,7 @@ button {
   align-items: center;
   gap: 8px;
   margin-top: 8px;
-  margin-bottom: 0;
+  margin-bottom: 8px;
   font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
   font-size: 14px;
   line-height: 24px;
@@ -1316,10 +1316,16 @@ button {
 
 .live-update-timestamp {
   display: block;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.live-update-timestamp.has-author-image {
   margin-top: 8px;
 }
 
 .live-update-card > h2 {
+  margin-top: 8px;
   color: #1a1a1a;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
   font-size: 24px;

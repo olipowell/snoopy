@@ -530,7 +530,13 @@ function LiveUpdateCard({
         <UpdateActions update={update} />
       </div>
       {update.author && (
-        <time className="live-update-timestamp">{update.time}</time>
+        <time
+          className={`live-update-timestamp ${
+            update.author.image ? "has-author-image" : ""
+          }`}
+        >
+          {update.time}
+        </time>
       )}
       <h2>{update.headline}</h2>
       {update.paragraphs.map((paragraph) => (
