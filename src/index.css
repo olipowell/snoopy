@@ -1499,7 +1499,7 @@ button {
   min-width: 0;
   max-width: 100%;
   align-items: center;
-  gap: 9px 7px;
+  gap: 9px 8px;
   text-align: left;
 }
 
@@ -1514,16 +1514,27 @@ button {
 }
 
 .latest-comment > span {
-  display: grid;
+  display: flex;
   min-width: 0;
-  gap: 2px;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.latest-comment-time {
+  flex: 0 0 auto;
+  color: #7500eb;
+  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .latest-comment-text {
   display: block;
+  min-width: 0;
+  flex: 1 1 auto;
   overflow: hidden;
   color: #7500eb;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 17px;
   text-overflow: ellipsis;
   white-space: nowrap;

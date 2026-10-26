@@ -659,6 +659,7 @@ function LiveUpdateCard({
           >
             <img src={`${A}/${latestComment.avatar}`} alt="" />
             <span>
+              <time className="latest-comment-time">19:58</time>
               <span className="latest-comment-text">{latestComment.text}</span>
             </span>
           </button>
