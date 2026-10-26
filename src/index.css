@@ -1472,23 +1472,19 @@ button {
   align-items: flex-end;
   justify-content: space-between;
   gap: 16px;
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 .live-update-footer .meta {
   flex: 0 0 auto;
   margin-left: auto;
   margin-top: 0;
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
 
 .active-comment-footer {
   border-top: 1px solid #dedede;
   padding-top: 16px;
-}
-
-.active-comment-footer .meta {
-  margin-bottom: 4px;
 }
 
 .latest-comment {
