@@ -597,7 +597,7 @@ function LiveUpdateCard({
       id={update.id}
     >
       <div className="live-update-toolbar">
-        {update.author ? (
+        {update.author && (
           <div className="live-update-author">
             {update.author.image ? (
               <img
@@ -617,18 +617,9 @@ function LiveUpdateCard({
               {update.author.name}
             </span>
           </div>
-        ) : (
-          <time>{update.time}</time>
         )}
         <UpdateActions update={update} />
       </div>
-      {update.author && (
-        <time
-          className="live-update-timestamp has-author-image"
-        >
-          {update.time}
-        </time>
-      )}
       <h2>{update.headline}</h2>
       {update.paragraphs.map((paragraph) => (
         <p key={paragraph}>{paragraph}</p>
@@ -640,25 +631,8 @@ function LiveUpdateCard({
           ))}
         </ul>
       )}
-      <div
-        className={`live-update-footer ${
-          comments.length ? "active-comment-footer" : ""
-        }`}
-      >
-        {latestComment && (
-          <button
-            type="button"
-            className="latest-comment"
-            onClick={() => setCommentsOpen((current) => !current)}
-            aria-controls={threadId}
-            aria-expanded={commentsOpen}
-          >
-            <img src={`${A}/${latestComment.avatar}`} alt="" />
-            <span>
-              <span className="latest-comment-text">{latestComment.text}</span>
-            </span>
-          </button>
-        )}
+      <div className="live-update-footer">
+        <time>{update.time}</time>
         <Meta
           timestamp={null}
           usefulCount={update.usefulCount}
@@ -672,6 +646,22 @@ function LiveUpdateCard({
           }
         />
       </div>
+      {latestComment && (
+        <div className="latest-comment-container">
+          <button
+            type="button"
+            className="latest-comment"
+            onClick={() => setCommentsOpen((current) => !current)}
+            aria-controls={threadId}
+            aria-expanded={commentsOpen}
+          >
+            <img src={`${A}/${latestComment.avatar}`} alt="" />
+            <span>
+              <span className="latest-comment-text">{latestComment.text}</span>
+            </span>
+          </button>
+        </div>
+      )}
       {commentsOpen && (
         <InlineComments comments={comments} threadId={threadId} />
       )}
