@@ -1083,12 +1083,8 @@ button {
   stroke-width: 1.8;
 }
 
-.comment-trigger.has-comments {
-  color: #7500eb;
-}
-
-.comment-trigger.has-comments svg path {
-  stroke: #7500eb;
+.comment-trigger svg path {
+  stroke: #757575;
 }
 
 .reaction {
@@ -1488,9 +1484,9 @@ button {
 }
 
 .latest-comment-container {
-  margin: 16px 0 0;
+  margin: 16px -24px 0;
   border-top: 1px solid #dedede;
-  padding-top: 16px;
+  padding: 16px 24px 0;
 }
 
 .latest-comment {
@@ -1517,15 +1513,15 @@ button {
   display: flex;
   min-width: 0;
   align-items: baseline;
-  gap: 8px;
+  gap: 2px 16px;
 }
 
 .latest-comment-time {
   flex: 0 0 auto;
-  color: #7500eb;
+  color: #008080;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
   font-size: 14px;
-  line-height: 17px;
+  line-height: 14px;
 }
 
 .latest-comment-text {
@@ -1533,9 +1529,9 @@ button {
   min-width: 0;
   flex: 1 1 auto;
   overflow: hidden;
-  color: #7500eb;
+  color: #757575;
   font-size: 14px;
-  line-height: 17px;
+  line-height: 14px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

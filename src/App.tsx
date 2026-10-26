@@ -397,9 +397,7 @@ function Meta({
         {showComments && (
           <button
             type="button"
-            className={`comment-trigger ${
-              commentCount > 0 ? "has-comments" : ""
-            }`}
+            className="comment-trigger"
             onClick={onCommentsClick}
             disabled={!onCommentsClick}
             aria-label={
