@@ -1484,6 +1484,7 @@ button {
 }
 
 .latest-comment-container {
+  width: calc(100% + 48px);
   margin: 16px -24px 0;
   border-top: 1px solid #dedede;
   padding: 16px 24px 0;
