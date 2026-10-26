@@ -64,7 +64,7 @@ export const liveArticle: LiveArticle = {
           author: "Maya Thompson",
           avatar: "profile-avatar.png",
           timestamp: "2 mins ago",
-          text: "The Tuesday warning is useful to know about. I hope the areas already flooded get a chance to recover first.",
+          text: "😤Rain, rain, go away, come again another day",
         },
         {
           id: "comment-2",
