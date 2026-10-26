@@ -632,7 +632,15 @@ function InlineComments({
                   <span>{comment.author}</span>
                   <time>{comment.timestamp}</time>
                 </div>
-                <p>{comment.text}</p>
+                <p
+                  className={
+                    comment.text === "is it moi you're looking for"
+                      ? "selected-comment-text"
+                      : undefined
+                  }
+                >
+                  {comment.text}
+                </p>
               </div>
             </li>
           ))}

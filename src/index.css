@@ -1789,6 +1789,10 @@ button {
   color: rgb(117, 0, 235);
 }
 
+.inline-comments-list p.selected-comment-text {
+  margin-top: 0;
+}
+
 .final-card {
   margin-bottom: 16px;
 }
