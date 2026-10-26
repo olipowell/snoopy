@@ -1491,13 +1491,13 @@ button {
 }
 
 .latest-comment-text {
-  display: -webkit-box;
+  display: block;
   overflow: hidden;
-  color: #595959;
-  font-size: 13px;
+  color: #757575;
+  font-size: 14px;
   line-height: 17px;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .inline-comments {
