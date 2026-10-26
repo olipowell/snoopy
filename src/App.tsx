@@ -640,7 +640,11 @@ function LiveUpdateCard({
           ))}
         </ul>
       )}
-      <div className="live-update-footer">
+      <div
+        className={`live-update-footer ${
+          comments.length ? "active-comment-footer" : ""
+        }`}
+      >
         {latestComment && (
           <button
             type="button"

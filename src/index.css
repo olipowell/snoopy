@@ -1482,6 +1482,15 @@ button {
   margin-bottom: 8px;
 }
 
+.active-comment-footer {
+  border-top: 1px solid #dedede;
+  padding-top: 16px;
+}
+
+.active-comment-footer .meta {
+  margin-bottom: 4px;
+}
+
 .latest-comment {
   display: flex;
   min-width: 0;
