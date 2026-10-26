@@ -380,6 +380,7 @@ function Meta({
   showComments = false,
   commentCount = 0,
   commentsOpen = false,
+  commentsId,
   onCommentsClick,
 }: {
   dark?: boolean
@@ -388,6 +389,7 @@ function Meta({
   showComments?: boolean
   commentCount?: number
   commentsOpen?: boolean
+  commentsId?: string
   onCommentsClick?: () => void
 }) {
   return (
@@ -403,9 +405,12 @@ function Meta({
             aria-label={
               commentCount
                 ? `${commentsOpen ? "Close" : "Open"} ${commentCount} comments`
-                : "No comments on this update"
+                : `${
+                    commentsOpen ? "Close" : "Open"
+                  } comments and add the first response`
             }
-            aria-expanded={commentCount ? commentsOpen : undefined}
+            aria-controls={commentsId}
+            aria-expanded={commentsOpen}
           >
             <CommentIcon />
             {commentCount > 0 && <span>{commentCount}</span>}
@@ -544,10 +549,25 @@ function UpdateActions({ update }: { update: LiveUpdate }) {
 function InlineComments({
   comments,
   threadId,
+  canComment = false,
+  onSubmitComment,
 }: {
   comments: InlineComment[]
   threadId: string
+  canComment?: boolean
+  onSubmitComment?: (text: string) => void
 }) {
+  const [commentText, setCommentText] = useState("")
+
+  const submitComment = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const text = commentText.trim()
+    if (!text || !onSubmitComment) return
+
+    onSubmitComment(text)
+    setCommentText("")
+  }
+
   return (
     <section
       className="inline-comments"
@@ -557,24 +577,55 @@ function InlineComments({
       <div className="inline-comments-header">
         <div>
           <h3>Comments</h3>
-          <span>{comments.length} responses</span>
+          <span>
+            {comments.length
+              ? `${comments.length} ${
+                  comments.length === 1 ? "response" : "responses"
+                }`
+              : "No responses yet"}
+          </span>
         </div>
-        <span className="comments-closed">Comments closed</span>
+        {canComment ? (
+          <span className="comments-open">Join the conversation</span>
+        ) : (
+          <span className="comments-closed">Comments closed</span>
+        )}
       </div>
-      <ol className="inline-comments-list">
-        {comments.map((comment) => (
-          <li key={comment.id}>
-            <img src={`${A}/${comment.avatar}`} alt="" />
-            <div>
-              <div className="inline-comment-meta">
-                <span>{comment.author}</span>
-                <time>{comment.timestamp}</time>
+      {canComment && (
+        <form className="comment-composer" onSubmit={submitComment}>
+          <label htmlFor={`${threadId}-input`}>Add a comment</label>
+          <textarea
+            id={`${threadId}-input`}
+            value={commentText}
+            onChange={(event) => setCommentText(event.target.value)}
+            placeholder="Share your thoughts"
+            rows={3}
+            autoFocus
+          />
+          <div className="comment-composer-actions">
+            <span>Your comment will appear publicly.</span>
+            <button type="submit" disabled={!commentText.trim()}>
+              Post comment
+            </button>
+          </div>
+        </form>
+      )}
+      {comments.length > 0 && (
+        <ol className="inline-comments-list">
+          {comments.map((comment) => (
+            <li key={comment.id}>
+              <img src={`${A}/${comment.avatar}`} alt="" />
+              <div>
+                <div className="inline-comment-meta">
+                  <span>{comment.author}</span>
+                  <time>{comment.timestamp}</time>
+                </div>
+                <p>{comment.text}</p>
               </div>
-              <p>{comment.text}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
+            </li>
+          ))}
+        </ol>
+      )}
     </section>
   )
 }
@@ -587,9 +638,25 @@ function LiveUpdateCard({
   isLast: boolean
 }) {
   const [commentsOpen, setCommentsOpen] = useState(false)
-  const comments = update.comments ?? []
+  const [comments, setComments] = useState<InlineComment[]>(
+    () => update.comments ?? [],
+  )
+  const canComment = !update.comments?.length
   const latestComment = comments[0]
   const threadId = `${update.id}-comments`
+
+  const addComment = (text: string) => {
+    setComments((current) => [
+      {
+        id: `${update.id}-user-comment-${Date.now()}`,
+        author: "You",
+        avatar: "profile-avatar.png",
+        timestamp: "Just now",
+        text,
+      },
+      ...current,
+    ])
+  }
 
   return (
     <section
@@ -647,11 +714,8 @@ function LiveUpdateCard({
           showComments
           commentCount={comments.length}
           commentsOpen={commentsOpen}
-          onCommentsClick={
-            comments.length
-              ? () => setCommentsOpen((current) => !current)
-              : undefined
-          }
+          commentsId={threadId}
+          onCommentsClick={() => setCommentsOpen((current) => !current)}
         />
       </div>
       {latestComment && (
@@ -672,7 +736,12 @@ function LiveUpdateCard({
         </div>
       )}
       {commentsOpen && (
-        <InlineComments comments={comments} threadId={threadId} />
+        <InlineComments
+          comments={comments}
+          threadId={threadId}
+          canComment={canComment}
+          onSubmitComment={addComment}
+        />
       )}
     </section>
   )
@@ -1046,11 +1115,7 @@ type AutoplayPromptProps = {
   onClose: () => void
 }
 
-function AutoplayPrompt({
-  enabled,
-  onChange,
-  onClose,
-}: AutoplayPromptProps) {
+function AutoplayPrompt({ enabled, onChange, onClose }: AutoplayPromptProps) {
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose()
@@ -1085,11 +1150,7 @@ function AutoplayPrompt({
             <source src={`${A}/autoplay-overlay.mp4`} type="video/mp4" />
           </video>
         ) : (
-          <img
-            className="autoplay-prompt-art"
-            src={`${A}/80216.png`}
-            alt=""
-          />
+          <img className="autoplay-prompt-art" src={`${A}/80216.png`} alt="" />
         )}
         <span className="autoplay-feature-label">New feature</span>
         <button
@@ -1103,8 +1164,8 @@ function AutoplayPrompt({
         <h2 id="autoplay-prompt-title">Autoplay</h2>
         <p className="autoplay-intro">For a richer story experience</p>
         <p id="autoplay-prompt-description" className="autoplay-description">
-          Autoplaying video and audio will only play automatically if you
-          choose to enable them.
+          Autoplaying video and audio will only play automatically if you choose
+          to enable them.
         </p>
         <button
           className="autoplay-toggle-control"
@@ -1147,186 +1208,182 @@ export default function App() {
             audioStationIndex !== null ? "has-audio-player" : ""
           }`}
         >
-        <header className="site-header">
-          <img
-            className="profile"
-            src={`${A}/profile-avatar.png`}
-            alt="Your profile"
-          />
-          <img className="bbc-logo" src={`${A}/87f0f.svg`} alt="BBC" />
-          <button type="button" aria-label="Open global navigation">
-            <img src={`${A}/af46b.svg`} alt="" />
-          </button>
-        </header>
-
-        <article>
-          <section className="topper">
-            <div className="utility-row">
-              <button type="button" className="topic-chip">
-                {liveArticle.topic}
-              </button>
-              <button
-                type="button"
-                className="share-button"
-                aria-label="More story options"
-              >
-                <img src={`${A}/b460c.svg`} alt="" />
-              </button>
-            </div>
-            <h1 className="hero-title">{liveArticle.headline}</h1>
-            <div className="updated">
-              <span className="updated-item">
-                <svg
-                  className="updated-bolt"
-                  viewBox="0 0 32 32"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill="#008080"
-                    d="M13.4224 25.7557L21.9223 15.5557H16.1443L17.2667 6.67767L9.58902 17.7777H14.5557L13.4224 25.7557ZM12 20H7.44435C6.9999 20 6.67213 19.8019 6.46102 19.4057C6.2499 19.0092 6.27768 18.6259 6.54435 18.2557L17.3777 2.63334C17.5704 2.36667 17.8148 2.18334 18.111 2.08334C18.4075 1.98334 18.7075 1.99256 19.011 2.11101C19.3148 2.22967 19.5481 2.42601 19.711 2.70001C19.8741 2.97401 19.9335 3.27034 19.889 3.58901L18.6667 13.3333H24.3C24.774 13.3333 25.1092 13.5445 25.3057 13.9667C25.5019 14.3889 25.4481 14.7852 25.1444 15.1557L13.2443 29.4223C13.0443 29.6668 12.7926 29.826 12.489 29.9C12.1852 29.974 11.8964 29.9481 11.6224 29.8223C11.3481 29.6963 11.1315 29.4981 10.9724 29.2277C10.813 28.9575 10.7556 28.663 10.8 28.3443L12 20Z"
-                  />
-                </svg>
-                <span className="updated-stat">{liveArticle.updatedLabel}</span>
-              </span>
-              <span className="updated-item">
-                <svg
-                  className="updated-eye"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill="none"
-                    stroke="#008080"
-                    d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"
-                  />
-                  <circle fill="#008080" cx="12" cy="12" r="2.5" />
-                </svg>
-                <span className="updated-stat">
-                  12,668 <span className="updated-detail">viewing</span>
-                </span>
-              </span>
-              <span className="updated-item">
-                <svg
-                  viewBox="0 0 32 32"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill="#008080"
-                    d="M20.8 14.3777C21.3184 14.3777 21.7592 14.1981 22.1223 13.839C22.4852 13.4797 22.6667 13.037 22.6667 12.511C22.6667 11.9852 22.4852 11.5427 22.1223 11.1833C21.7592 10.824 21.3184 10.6443 20.8 10.6443C20.2816 10.6443 19.8408 10.824 19.4777 11.1833C19.1148 11.5427 18.9333 11.9852 18.9333 12.511C18.9333 13.037 19.1148 13.4797 19.4777 13.839C19.8408 14.1981 20.2816 14.3777 20.8 14.3777ZM11.2 14.3777C11.7184 14.3777 12.1592 14.1981 12.5223 13.839C12.8852 13.4797 13.0667 13.037 13.0667 12.511C13.0667 11.9852 12.8852 11.5427 12.5223 11.1833C12.1592 10.824 11.7184 10.6443 11.2 10.6443C10.6816 10.6443 10.2408 10.824 9.87767 11.1833C9.51478 11.5427 9.33333 11.9852 9.33333 12.511C9.33333 13.037 9.51478 13.4797 9.87767 13.839C10.2408 14.1981 10.6816 14.3777 11.2 14.3777ZM10.8 28.2833C9.17778 27.5833 7.76667 26.6333 6.56667 25.4333C5.36667 24.2333 4.41667 22.8222 3.71667 21.2C3.01667 19.5778 2.66667 17.8444 2.66667 16C2.66667 14.1556 3.01667 12.4222 3.71667 10.8C4.41667 9.17778 5.36667 7.76667 6.56667 6.56667C7.76667 5.36667 9.17778 4.41667 10.8 3.71667C12.4222 3.01667 14.1556 2.66667 16 2.66667C17.8444 2.66667 19.5778 3.01667 21.2 3.71667C22.8222 4.41667 24.2333 5.36667 25.4333 6.56667C26.6333 7.76667 27.5833 9.17778 28.2833 10.8C28.9833 12.4222 29.3333 14.1556 29.3333 16C29.3333 17.8444 28.9833 19.5778 28.2833 21.2C27.5833 22.8222 26.6333 24.2333 25.4333 25.4333C24.2333 26.6333 22.8222 27.5833 21.2 28.2833C19.5778 28.9833 17.8444 29.3333 16 29.3333C14.1556 29.3333 12.4222 28.9833 10.8 28.2833ZM23.8777 23.8777C26.0332 21.7221 27.111 19.0962 27.111 16C27.111 12.9038 26.0332 10.2779 23.8777 8.12233C21.7221 5.96678 19.0962 4.889 16 4.889C12.9038 4.889 10.2779 5.96678 8.12233 8.12233C5.96678 10.2779 4.889 12.9038 4.889 16C4.889 19.0962 5.96678 21.7221 8.12233 23.8777C10.2779 26.0332 12.9038 27.111 16 27.111C19.0962 27.111 21.7221 26.0332 23.8777 23.8777ZM15.989 23.311C17.2703 23.311 18.4518 23.0148 19.5333 22.4223C20.6149 21.8297 21.489 21.0119 22.1557 19.969C22.289 19.7081 22.2797 19.4518 22.1277 19.2C21.9759 18.9482 21.7481 18.8223 21.4443 18.8223H10.5537C10.2439 18.8223 10.0149 18.9482 9.86667 19.2C9.71844 19.4518 9.711 19.7081 9.84433 19.969C10.511 21.0119 11.387 21.8297 12.4723 22.4223C13.5574 23.0148 14.7297 23.311 15.989 23.311Z"
-                  />
-                </svg>
-                <span className="updated-stat">
-                  2,852 <span className="updated-detail">discussing</span>
-                </span>
-              </span>
-            </div>
-            <div className="hero-media">
-              <img
-                className="hero-poster"
-                src={`${A}/${liveArticle.heroImage}`}
-                alt={liveArticle.heroAlt}
-              />
-              <div className="live-pill">
-                <span
-                  className="live-dot hero-live-dot"
-                  aria-hidden="true"
-                />
-                <span className="live-label">Live</span>
-              </div>
-            </div>
-          </section>
-
-          <nav className="page-nav" aria-label="Page navigation">
-            {navigation.map(([icon, label]) => (
-              <button
-                key={label}
-                type="button"
-                className={`${activeNav === label ? "active" : ""} nav-${label
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")} ${
-                  label === "In Depth" ? "in-depth-nav" : ""
-                }`}
-                onClick={() => setActiveNav(label)}
-              >
-                <img src={`${A}/${icon}`} alt="" />
-                <span>{label}</span>
-              </button>
-            ))}
-          </nav>
-
-          {activeNav === "Latest" ? (
-            <>
-              <section className="summary-card card" aria-label="Summary">
-                <h2>Summary</h2>
-                <div
-                  className="summary-content"
-                  onScroll={(event) => {
-                    const content = event.currentTarget
-                    setSummaryIndex(
-                      Math.round(content.scrollLeft / content.clientWidth),
-                    )
-                  }}
-                >
-                  {liveArticle.summaries.map((summary, index) => (
-                    <p
-                      className="summary-slide"
-                      key={summary}
-                      aria-label={`Summary ${index + 1} of ${liveArticle.summaries.length}`}
-                    >
-                      {summary}
-                    </p>
-                  ))}
-                </div>
-                <div className="summary-dots" aria-hidden="true">
-                  {liveArticle.summaries.map((_, index) => (
-                    <span
-                      key={index}
-                      className={index === summaryIndex ? "active" : ""}
-                    />
-                  ))}
-                </div>
-              </section>
-
-              <section className="story-section" aria-label="Video stories">
-                <div className="story-avatars">
-                  {stories.map((story, index) => (
-                    <button
-                      key={story.title}
-                      type="button"
-                      onClick={() => setStoryIndex(index)}
-                      aria-label={`Play: ${story.title}`}
-                    >
-                      <span className="avatar-frame">
-                        <img src={`${A}/${story.image}`} alt="" />
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </section>
-
-              {liveArticle.updates.map((update, index) => (
-                <LiveUpdateCard
-                  key={update.id}
-                  update={update}
-                  isLast={index === liveArticle.updates.length - 1}
-                />
-              ))}
-            </>
-          ) : activeNav === "Videos" ? (
-            <VideosPage />
-          ) : activeNav === "In Depth" ? (
-            <EditorialPlaceholder type="In Depth" />
-          ) : activeNav === "Verify" ? (
-            <EditorialPlaceholder type="Verify" />
-          ) : activeNav === "Sounds" ? (
-            <SoundsPage
-              onSelectStation={setAudioStationIndex}
-              activeStation={audioStationIndex}
+          <header className="site-header">
+            <img
+              className="profile"
+              src={`${A}/profile-avatar.png`}
+              alt="Your profile"
             />
-          ) : (
-            <CommentsPage />
-          )}
-        </article>
+            <img className="bbc-logo" src={`${A}/87f0f.svg`} alt="BBC" />
+            <button type="button" aria-label="Open global navigation">
+              <img src={`${A}/af46b.svg`} alt="" />
+            </button>
+          </header>
+
+          <article>
+            <section className="topper">
+              <div className="utility-row">
+                <button type="button" className="topic-chip">
+                  {liveArticle.topic}
+                </button>
+                <button
+                  type="button"
+                  className="share-button"
+                  aria-label="More story options"
+                >
+                  <img src={`${A}/b460c.svg`} alt="" />
+                </button>
+              </div>
+              <h1 className="hero-title">{liveArticle.headline}</h1>
+              <div className="updated">
+                <span className="updated-item">
+                  <svg
+                    className="updated-bolt"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill="#008080"
+                      d="M13.4224 25.7557L21.9223 15.5557H16.1443L17.2667 6.67767L9.58902 17.7777H14.5557L13.4224 25.7557ZM12 20H7.44435C6.9999 20 6.67213 19.8019 6.46102 19.4057C6.2499 19.0092 6.27768 18.6259 6.54435 18.2557L17.3777 2.63334C17.5704 2.36667 17.8148 2.18334 18.111 2.08334C18.4075 1.98334 18.7075 1.99256 19.011 2.11101C19.3148 2.22967 19.5481 2.42601 19.711 2.70001C19.8741 2.97401 19.9335 3.27034 19.889 3.58901L18.6667 13.3333H24.3C24.774 13.3333 25.1092 13.5445 25.3057 13.9667C25.5019 14.3889 25.4481 14.7852 25.1444 15.1557L13.2443 29.4223C13.0443 29.6668 12.7926 29.826 12.489 29.9C12.1852 29.974 11.8964 29.9481 11.6224 29.8223C11.3481 29.6963 11.1315 29.4981 10.9724 29.2277C10.813 28.9575 10.7556 28.663 10.8 28.3443L12 20Z"
+                    />
+                  </svg>
+                  <span className="updated-stat">
+                    {liveArticle.updatedLabel}
+                  </span>
+                </span>
+                <span className="updated-item">
+                  <svg
+                    className="updated-eye"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill="none"
+                      stroke="#008080"
+                      d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"
+                    />
+                    <circle fill="#008080" cx="12" cy="12" r="2.5" />
+                  </svg>
+                  <span className="updated-stat">
+                    12,668 <span className="updated-detail">viewing</span>
+                  </span>
+                </span>
+                <span className="updated-item">
+                  <svg viewBox="0 0 32 32" aria-hidden="true">
+                    <path
+                      fill="#008080"
+                      d="M20.8 14.3777C21.3184 14.3777 21.7592 14.1981 22.1223 13.839C22.4852 13.4797 22.6667 13.037 22.6667 12.511C22.6667 11.9852 22.4852 11.5427 22.1223 11.1833C21.7592 10.824 21.3184 10.6443 20.8 10.6443C20.2816 10.6443 19.8408 10.824 19.4777 11.1833C19.1148 11.5427 18.9333 11.9852 18.9333 12.511C18.9333 13.037 19.1148 13.4797 19.4777 13.839C19.8408 14.1981 20.2816 14.3777 20.8 14.3777ZM11.2 14.3777C11.7184 14.3777 12.1592 14.1981 12.5223 13.839C12.8852 13.4797 13.0667 13.037 13.0667 12.511C13.0667 11.9852 12.8852 11.5427 12.5223 11.1833C12.1592 10.824 11.7184 10.6443 11.2 10.6443C10.6816 10.6443 10.2408 10.824 9.87767 11.1833C9.51478 11.5427 9.33333 11.9852 9.33333 12.511C9.33333 13.037 9.51478 13.4797 9.87767 13.839C10.2408 14.1981 10.6816 14.3777 11.2 14.3777ZM10.8 28.2833C9.17778 27.5833 7.76667 26.6333 6.56667 25.4333C5.36667 24.2333 4.41667 22.8222 3.71667 21.2C3.01667 19.5778 2.66667 17.8444 2.66667 16C2.66667 14.1556 3.01667 12.4222 3.71667 10.8C4.41667 9.17778 5.36667 7.76667 6.56667 6.56667C7.76667 5.36667 9.17778 4.41667 10.8 3.71667C12.4222 3.01667 14.1556 2.66667 16 2.66667C17.8444 2.66667 19.5778 3.01667 21.2 3.71667C22.8222 4.41667 24.2333 5.36667 25.4333 6.56667C26.6333 7.76667 27.5833 9.17778 28.2833 10.8C28.9833 12.4222 29.3333 14.1556 29.3333 16C29.3333 17.8444 28.9833 19.5778 28.2833 21.2C27.5833 22.8222 26.6333 24.2333 25.4333 25.4333C24.2333 26.6333 22.8222 27.5833 21.2 28.2833C19.5778 28.9833 17.8444 29.3333 16 29.3333C14.1556 29.3333 12.4222 28.9833 10.8 28.2833ZM23.8777 23.8777C26.0332 21.7221 27.111 19.0962 27.111 16C27.111 12.9038 26.0332 10.2779 23.8777 8.12233C21.7221 5.96678 19.0962 4.889 16 4.889C12.9038 4.889 10.2779 5.96678 8.12233 8.12233C5.96678 10.2779 4.889 12.9038 4.889 16C4.889 19.0962 5.96678 21.7221 8.12233 23.8777C10.2779 26.0332 12.9038 27.111 16 27.111C19.0962 27.111 21.7221 26.0332 23.8777 23.8777ZM15.989 23.311C17.2703 23.311 18.4518 23.0148 19.5333 22.4223C20.6149 21.8297 21.489 21.0119 22.1557 19.969C22.289 19.7081 22.2797 19.4518 22.1277 19.2C21.9759 18.9482 21.7481 18.8223 21.4443 18.8223H10.5537C10.2439 18.8223 10.0149 18.9482 9.86667 19.2C9.71844 19.4518 9.711 19.7081 9.84433 19.969C10.511 21.0119 11.387 21.8297 12.4723 22.4223C13.5574 23.0148 14.7297 23.311 15.989 23.311Z"
+                    />
+                  </svg>
+                  <span className="updated-stat">
+                    2,852 <span className="updated-detail">discussing</span>
+                  </span>
+                </span>
+              </div>
+              <div className="hero-media">
+                <img
+                  className="hero-poster"
+                  src={`${A}/${liveArticle.heroImage}`}
+                  alt={liveArticle.heroAlt}
+                />
+                <div className="live-pill">
+                  <span className="live-dot hero-live-dot" aria-hidden="true" />
+                  <span className="live-label">Live</span>
+                </div>
+              </div>
+            </section>
+
+            <nav className="page-nav" aria-label="Page navigation">
+              {navigation.map(([icon, label]) => (
+                <button
+                  key={label}
+                  type="button"
+                  className={`${activeNav === label ? "active" : ""} nav-${label
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")} ${
+                    label === "In Depth" ? "in-depth-nav" : ""
+                  }`}
+                  onClick={() => setActiveNav(label)}
+                >
+                  <img src={`${A}/${icon}`} alt="" />
+                  <span>{label}</span>
+                </button>
+              ))}
+            </nav>
+
+            {activeNav === "Latest" ? (
+              <>
+                <section className="summary-card card" aria-label="Summary">
+                  <h2>Summary</h2>
+                  <div
+                    className="summary-content"
+                    onScroll={(event) => {
+                      const content = event.currentTarget
+                      setSummaryIndex(
+                        Math.round(content.scrollLeft / content.clientWidth),
+                      )
+                    }}
+                  >
+                    {liveArticle.summaries.map((summary, index) => (
+                      <p
+                        className="summary-slide"
+                        key={summary}
+                        aria-label={`Summary ${index + 1} of ${liveArticle.summaries.length}`}
+                      >
+                        {summary}
+                      </p>
+                    ))}
+                  </div>
+                  <div className="summary-dots" aria-hidden="true">
+                    {liveArticle.summaries.map((_, index) => (
+                      <span
+                        key={index}
+                        className={index === summaryIndex ? "active" : ""}
+                      />
+                    ))}
+                  </div>
+                </section>
+
+                <section className="story-section" aria-label="Video stories">
+                  <div className="story-avatars">
+                    {stories.map((story, index) => (
+                      <button
+                        key={story.title}
+                        type="button"
+                        onClick={() => setStoryIndex(index)}
+                        aria-label={`Play: ${story.title}`}
+                      >
+                        <span className="avatar-frame">
+                          <img src={`${A}/${story.image}`} alt="" />
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </section>
+
+                {liveArticle.updates.map((update, index) => (
+                  <LiveUpdateCard
+                    key={update.id}
+                    update={update}
+                    isLast={index === liveArticle.updates.length - 1}
+                  />
+                ))}
+              </>
+            ) : activeNav === "Videos" ? (
+              <VideosPage />
+            ) : activeNav === "In Depth" ? (
+              <EditorialPlaceholder type="In Depth" />
+            ) : activeNav === "Verify" ? (
+              <EditorialPlaceholder type="Verify" />
+            ) : activeNav === "Sounds" ? (
+              <SoundsPage
+                onSelectStation={setAudioStationIndex}
+                activeStation={audioStationIndex}
+              />
+            ) : (
+              <CommentsPage />
+            )}
+          </article>
         </main>
         {storyIndex !== null && (
           <StoryViewer

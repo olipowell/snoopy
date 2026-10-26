@@ -1597,6 +1597,82 @@ button {
   white-space: nowrap;
 }
 
+.comments-open {
+  border-radius: 999px;
+  padding: 6px 9px;
+  color: #005a5a;
+  background: #e1f4f2;
+  font-family: "BBC Reith Sans:Medium", Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.comment-composer {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.comment-composer label {
+  color: #1a1a1a;
+  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.comment-composer textarea {
+  width: 100%;
+  min-height: 92px;
+  resize: vertical;
+  border: 1px solid #8a8a8a;
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: #1a1a1a;
+  background: #fff;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.comment-composer textarea::placeholder {
+  color: #757575;
+}
+
+.comment-composer textarea:focus {
+  border-color: #005a5a;
+  outline: 3px solid rgba(0, 128, 128, 0.2);
+  outline-offset: 1px;
+}
+
+.comment-composer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.comment-composer-actions > span {
+  color: #757575;
+  font-size: 11px;
+  line-height: 15px;
+}
+
+.comment-composer-actions button {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 10px 15px;
+  color: #fff;
+  background: #006666;
+  font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.comment-composer-actions button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
 .inline-comments-list {
   display: grid;
   gap: 0;
