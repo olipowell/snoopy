@@ -1673,6 +1673,36 @@ button {
   opacity: 0.45;
 }
 
+#storm-boelo-latest-comments .inline-comments-header > div {
+  gap: 4px 2px;
+  row-gap: 4px;
+}
+
+#storm-boelo-latest-comments .inline-comments-header h3 {
+  font-size: 24px;
+}
+
+#storm-boelo-latest-comments .inline-comments-header > div > span,
+#storm-boelo-latest-comments .comments-open,
+#storm-boelo-latest-comments .comment-composer-actions > span {
+  font-size: 14px;
+}
+
+#storm-boelo-latest-comments .comment-composer label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+#storm-boelo-latest-comments .comment-composer-actions button {
+  font-size: 16px;
+}
+
 .inline-comments-list {
   display: grid;
   gap: 0;
