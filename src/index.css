@@ -1362,7 +1362,7 @@ button {
 }
 
 .live-update-card > h2 {
-  margin-top: 8px;
+  margin-top: 0;
   color: #1a1a1a;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
   font-size: 24px;
