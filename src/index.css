@@ -1679,7 +1679,9 @@ button {
 }
 
 #storm-boelo-latest-comments {
+  margin-top: 16px;
   border-top: 0;
+  padding-top: 0;
 }
 
 #storm-boelo-latest-comments .inline-comments-header h3 {
