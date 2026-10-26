@@ -599,9 +599,10 @@ function LiveUpdateCard({
       <div className="live-update-toolbar">
         {update.author ? (
           <div className="live-update-author">
-            {update.author.image && (
-              <img src={`${A}/${update.author.image}`} alt="" />
-            )}
+            <img
+              src={`${A}/${update.author.image ?? "8f0af.svg"}`}
+              alt=""
+            />
             <span className="live-update-author-name">
               {update.author.name}
             </span>
@@ -613,9 +614,7 @@ function LiveUpdateCard({
       </div>
       {update.author && (
         <time
-          className={`live-update-timestamp ${
-            update.author.image ? "has-author-image" : ""
-          }`}
+          className="live-update-timestamp has-author-image"
         >
           {update.time}
         </time>

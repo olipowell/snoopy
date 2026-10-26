@@ -1323,9 +1323,10 @@ button {
 }
 
 .live-update-author img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 32px;
   object-fit: cover;
 }
 
@@ -1465,6 +1466,7 @@ button {
   flex: 0 0 auto;
   margin-left: auto;
   margin-top: 0;
+  margin-bottom: 8px;
 }
 
 .latest-comment {
@@ -1472,15 +1474,17 @@ button {
   min-width: 0;
   max-width: calc(100% - 88px);
   align-items: center;
-  gap: 9px;
+  gap: 9px 7px;
   text-align: left;
 }
 
 .latest-comment > img {
-  width: 34px;
-  height: 34px;
-  flex: 0 0 34px;
-  border-radius: 50%;
+  width: 32px;
+  max-width: 32px;
+  height: 32px;
+  aspect-ratio: 1;
+  flex: 0 0 32px;
+  border-radius: 32px;
   object-fit: cover;
 }
 
@@ -1550,7 +1554,7 @@ button {
 
 .inline-comments-list li {
   display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
+  grid-template-columns: 32px minmax(0, 1fr);
   gap: 10px;
   padding: 14px 0;
 }
@@ -1560,9 +1564,9 @@ button {
 }
 
 .inline-comments-list li > img {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
   object-fit: cover;
 }
 
