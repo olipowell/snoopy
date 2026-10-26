@@ -1318,7 +1318,7 @@ button {
 .live-update-author-name {
   color: #1a1a1a;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
 }
 
@@ -1981,10 +1981,6 @@ button {
 }
 
 @media (max-width: 599px) {
-  .live-update-author-name {
-    font-size: 14px;
-  }
-
   .updated-detail {
     display: none;
   }
