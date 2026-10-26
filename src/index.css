@@ -1297,6 +1297,13 @@ button {
   padding-bottom: 16px;
 }
 
+.live-update-card#more-rain-and-strong-winds {
+  width: calc(100% - 48px);
+  margin-right: 24px;
+  margin-bottom: 24px;
+  margin-left: 24px;
+}
+
 .live-update-card .reaction {
   gap: 5px 0;
   column-gap: 0;
