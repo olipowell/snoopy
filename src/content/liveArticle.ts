@@ -64,7 +64,7 @@ export const liveArticle: LiveArticle = {
           author: "Maya Thompson",
           avatar: "profile-avatar.png",
           timestamp: "2 mins ago",
-          text: "😤Rain, rain, go away, come again another day",
+          text: "FML 😤 ☔ Rain, rain, go away, come back another day 👊🏻 HIIII-YA 👊🏻",
         },
         {
           id: "comment-2",
