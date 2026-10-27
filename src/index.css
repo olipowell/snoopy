@@ -316,7 +316,7 @@ button {
 }
 
 .page-nav button.nav-latest {
-  margin-left: 24px;
+  padding-left: 24px;
 }
 
 .page-nav button.active {
@@ -378,6 +378,10 @@ button {
 
 .page-nav button:first-child.active img {
   filter: invert(1);
+}
+
+.page-nav button.active.nav-latest::before {
+  left: 0;
 }
 
 .page-nav button.in-depth-nav img {
