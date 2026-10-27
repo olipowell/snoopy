@@ -1302,7 +1302,7 @@ export default function App() {
                     />
                   </svg>
                   <span className="updated-stat">
-                    2,852 <span className="updated-detail">discussing</span>
+                    2.8k <span className="updated-detail">discussing</span>
                   </span>
                 </span>
               </div>
