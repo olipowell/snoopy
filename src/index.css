@@ -304,22 +304,21 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px 1px;
+  gap: 2px 1px;
   border-radius: 32px;
   padding: 8px 12px;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
-  font-size: 12px;
-  line-height: 1;
+  font-size: 10px;
+  line-height: 16px;
 }
 
 .page-nav button.active {
-  padding-right: 24px;
-  padding-left: 24px;
+  padding: 8px 24px 6px;
   color: white;
-  background: #008080;
+  background: #000;
 }
 
-.page-nav button.active.nav-videos {
+.page-nav button.active.nav-video {
   background: #fe59aa;
 }
 
@@ -336,7 +335,7 @@ button {
 }
 
 .page-nav button.active.nav-your-voice {
-  background: #963ce1;
+  background: #7500eb;
 }
 
 .page-nav button:not(.active) {
@@ -353,7 +352,8 @@ button {
 }
 
 .page-nav button:first-child img {
-  filter: none;
+  width: 30px;
+  height: 21px;
 }
 
 .page-nav button:first-child.active img {
@@ -366,8 +366,8 @@ button {
 }
 
 .page-nav button.in-depth-nav {
-  gap: 4px 1px;
-  row-gap: 4px;
+  gap: 2px 1px;
+  row-gap: 2px;
   column-gap: 1px;
 }
 
@@ -2243,22 +2243,6 @@ button {
 
   .hero-title {
     font-size: 48px;
-  }
-
-  .page-nav button {
-    padding-right: 24px;
-    padding-left: 24px;
-    font-size: 14px;
-  }
-
-  .page-nav button img {
-    width: 32px;
-    height: 32px;
-  }
-
-  .page-nav button.in-depth-nav img {
-    width: 30px;
-    height: 30px;
   }
 
   .story-avatars {

@@ -8,12 +8,12 @@ import {
 const A = `${import.meta.env.BASE_URL}assets`
 
 const navigation = [
-  ["acute.svg", "Latest"],
-  ["086ad.svg", "Videos"],
-  ["7298c.svg", "In Depth"],
-  ["a6ac1.svg", "Verify"],
-  ["2e0c5.svg", "Sounds"],
-  ["8f0af.svg", "Your Voice"],
+  ["nav-latest.svg", "Latest"],
+  ["nav-video.svg", "Video"],
+  ["nav-in-depth.svg", "In Depth"],
+  ["nav-verify.svg", "Verify"],
+  ["nav-sounds.svg", "Sounds"],
+  ["nav-your-voice.svg", "Your Voice"],
 ]
 
 const stories = [
@@ -1398,7 +1398,7 @@ export default function App() {
                   />
                 ))}
               </>
-            ) : activeNav === "Videos" ? (
+            ) : activeNav === "Video" ? (
               <VideosPage />
             ) : activeNav === "In Depth" ? (
               <EditorialPlaceholder type="In Depth" />
