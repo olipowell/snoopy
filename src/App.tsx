@@ -1249,6 +1249,14 @@ export default function App() {
   const [summaryIndex, setSummaryIndex] = useState(0)
   const [autoplayEnabled, setAutoplayEnabled] = useState(false)
   const [autoplayPromptOpen, setAutoplayPromptOpen] = useState(true)
+  const [bbcLogoAnimationRun, setBbcLogoAnimationRun] = useState(0)
+
+  const closeAutoplayPrompt = () => {
+    setAutoplayPromptOpen(false)
+    if (autoplayEnabled) {
+      setBbcLogoAnimationRun((run) => run + 1)
+    }
+  }
 
   return (
     <div className="prototype-stage">
@@ -1264,7 +1272,10 @@ export default function App() {
               src={`${A}/profile-avatar.png`}
               alt="Your profile"
             />
-            <BBCLogo animated={autoplayEnabled} />
+            <BBCLogo
+              key={bbcLogoAnimationRun}
+              animated={autoplayEnabled}
+            />
             <button type="button" aria-label="Open global navigation">
               <img src={`${A}/af46b.svg`} alt="" />
             </button>
@@ -1455,7 +1466,7 @@ export default function App() {
           <AutoplayPrompt
             enabled={autoplayEnabled}
             onChange={setAutoplayEnabled}
-            onClose={() => setAutoplayPromptOpen(false)}
+            onClose={closeAutoplayPrompt}
           />
         )}
       </div>
