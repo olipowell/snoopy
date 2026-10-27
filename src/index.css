@@ -180,6 +180,10 @@ button {
   font-size: 14px;
 }
 
+.updated-time-short {
+  display: none;
+}
+
 .updated svg {
   width: 24px;
   height: 24px;
@@ -2187,6 +2191,16 @@ button {
     --live-pulse-radius: 7px;
     width: 16px;
     height: 16px;
+  }
+}
+
+@media (max-width: 389px) {
+  .updated-time-long {
+    display: none;
+  }
+
+  .updated-time-short {
+    display: inline;
   }
 }
 
