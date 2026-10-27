@@ -315,6 +315,10 @@ button {
   line-height: 16px;
 }
 
+.page-nav button.nav-latest {
+  margin-left: 24px;
+}
+
 .page-nav button.active {
   --nav-active-background: #000;
   color: white;
