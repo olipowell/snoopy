@@ -1291,7 +1291,7 @@ export default function App() {
                     <circle fill="#008080" cx="12" cy="12" r="2.5" />
                   </svg>
                   <span className="updated-stat">
-                    12,668 <span className="updated-detail">viewing</span>
+                    12.6k <span className="updated-detail">viewing</span>
                   </span>
                 </span>
                 <span className="updated-item">
