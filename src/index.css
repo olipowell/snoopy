@@ -2292,7 +2292,7 @@ button {
   }
 }
 
-@container article-page (min-width: 700px) {
+@media (min-width: 701px) {
   .page-nav {
     width: calc(100% - 48px);
     justify-content: space-between;
