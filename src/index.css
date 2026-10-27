@@ -2195,6 +2195,16 @@ button {
 }
 
 @media (max-width: 389px) {
+  .updated {
+    gap: 8px;
+    column-gap: 8px;
+  }
+
+  .updated > .updated-item:first-child {
+    gap: 6px 4px;
+    column-gap: 4px;
+  }
+
   .updated-time-long {
     display: none;
   }
