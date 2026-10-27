@@ -296,6 +296,8 @@ button {
 }
 
 .page-nav button {
+  position: relative;
+  isolation: isolate;
   display: flex;
   width: fit-content;
   min-width: max-content;
@@ -313,29 +315,42 @@ button {
 }
 
 .page-nav button.active {
-  padding: 8px 24px 6px;
+  --nav-active-background: #000;
   color: white;
-  background: #000;
+  background: transparent;
+}
+
+.page-nav button.active::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: -12px;
+  bottom: 2px;
+  left: -12px;
+  border-radius: 48px;
+  pointer-events: none;
+  content: "";
+  background: var(--nav-active-background);
 }
 
 .page-nav button.active.nav-video {
-  background: #fe59aa;
+  --nav-active-background: #fe59aa;
 }
 
 .page-nav button.active.nav-in-depth {
-  background: #eb0000;
+  --nav-active-background: #eb0000;
 }
 
 .page-nav button.active.nav-verify {
-  background: #0000ff;
+  --nav-active-background: #0000ff;
 }
 
 .page-nav button.active.nav-sounds {
-  background: #fa6400;
+  --nav-active-background: #fa6400;
 }
 
 .page-nav button.active.nav-your-voice {
-  background: #7500eb;
+  --nav-active-background: #7500eb;
 }
 
 .page-nav button:not(.active) {
