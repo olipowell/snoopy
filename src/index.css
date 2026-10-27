@@ -2294,14 +2294,22 @@ button {
 
 @media (min-width: 701px) {
   .page-nav {
-    width: calc(100% - 48px);
+    width: 100%;
     justify-content: space-between;
-    gap: 4px 82px;
-    column-gap: 82px;
-    margin-right: 24px;
-    margin-left: 24px;
-    padding-right: 0;
-    padding-left: 0;
+    gap: 4px 0;
+    column-gap: 0;
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .page-nav button:last-child {
+    padding-right: 24px;
+  }
+
+  .page-nav button.active:last-child::before {
+    right: 0;
   }
 }
 
