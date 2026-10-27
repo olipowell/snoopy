@@ -1873,10 +1873,10 @@ button {
   position: absolute;
   top: 19.8px;
   left: 23.94px;
-  border-radius: 24px;
+  border-radius: 0;
   padding: 4px 8px 6px;
-  color: #000;
-  background: #00ff80;
+  color: #fff;
+  background: #000;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
   font-size: 12px;
   line-height: 1;
