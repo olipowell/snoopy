@@ -349,11 +349,11 @@ button {
 }
 
 .page-nav button:first-child img {
-  filter: invert(1);
+  filter: none;
 }
 
 .page-nav button:first-child.active img {
-  filter: none;
+  filter: invert(1);
 }
 
 .page-nav button.in-depth-nav img {
