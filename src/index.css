@@ -1887,14 +1887,15 @@ button {
   inset: 0;
   display: grid;
   place-items: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .autoplay-prompt {
   position: relative;
-  width: 320px;
-  height: 300px;
+  width: min(327px, calc(100vw - 48px));
+  aspect-ratio: 327 / 250;
   overflow: hidden;
   border-radius: 0;
   color: #fff;
@@ -1905,9 +1906,9 @@ button {
 .autoplay-prompt-art {
   position: absolute;
   top: 0;
-  left: -169px;
-  width: 534px;
-  height: 300px;
+  right: -9.786%;
+  width: 136.086%;
+  height: 100%;
   max-width: none;
   object-fit: cover;
   pointer-events: none;
@@ -1915,10 +1916,10 @@ button {
 
 .autoplay-feature-label {
   position: absolute;
-  top: 19.8px;
-  left: 23.94px;
+  top: 8%;
+  left: 7.339%;
   border-radius: 0;
-  padding: 4px 8px 6px;
+  padding: 4px 6px 6px;
   color: #fff;
   background: #000;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
@@ -1929,23 +1930,46 @@ button {
 .autoplay-close {
   position: absolute;
   z-index: 1;
-  top: 11px;
-  right: 12px;
+  top: 3.6%;
+  right: 3.058%;
   display: grid;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   place-items: center;
   color: #fff;
-  font-family: Arial, sans-serif;
-  font-size: 22px;
-  font-weight: 200;
-  line-height: 1;
+  font-size: 0;
+}
+
+.autoplay-close::before,
+.autoplay-close::after {
+  position: absolute;
+  width: 1.526px;
+  height: 13.732px;
+  background: currentColor;
+  content: "";
+}
+
+.autoplay-close::before {
+  transform: rotate(45deg);
+}
+
+.autoplay-close::after {
+  transform: rotate(-45deg);
+}
+
+.autoplay-close span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 .autoplay-prompt h2 {
   position: absolute;
-  top: 57.36px;
-  left: 28.94px;
+  top: 18.4%;
+  left: 7.339%;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
   font-size: 32px;
   line-height: 1;
@@ -1953,9 +1977,9 @@ button {
 
 .autoplay-intro {
   position: absolute;
-  top: 95px;
-  left: 29px;
-  width: 179px;
+  top: 34.4%;
+  left: 7.339%;
+  width: 54.74%;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
   font-size: 13px;
   line-height: 1.4;
@@ -1963,28 +1987,35 @@ button {
 
 .autoplay-description {
   position: absolute;
-  top: 124px;
-  left: 29px;
-  width: 156px;
-  font-size: 11px;
+  top: 44.8%;
+  left: 7.339%;
+  width: 53.211%;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "BBC Reith Sans:Regular", Arial, sans-serif;
+  font-size: 10px;
   line-height: 1.4;
+}
+
+.autoplay-description-wide,
+.autoplay-toggle-label-wide {
+  display: none;
 }
 
 .autoplay-toggle-control {
   position: absolute;
-  top: 195px;
-  left: 28px;
+  top: 68%;
+  left: 7.339%;
   display: flex;
-  width: 130px;
-  height: 40px;
+  width: 53.823%;
+  height: 13.6%;
   align-items: center;
   justify-content: space-between;
   border-radius: 29.468px;
-  padding: 0 12px 0 13.6px;
+  padding: 0 7.8px 0 13px;
   color: #000;
   background: #fff;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
-  font-size: 11.05px;
+  font-size: 12px;
   line-height: 1.4;
 }
 
@@ -1992,6 +2023,7 @@ button {
   position: relative;
   width: 44.201px;
   height: 20.259px;
+  flex: 0 0 auto;
   border-radius: 18.417px;
   background: #bcbcbc;
   transition: background 180ms ease;
@@ -2001,8 +2033,6 @@ button {
   position: absolute;
   top: 2.76px;
   left: 3.22px;
-  width: 14.734px;
-  height: 14.734px;
   transition: transform 180ms ease;
 }
 
@@ -2016,17 +2046,235 @@ button {
 
 .autoplay-footnote {
   position: absolute;
-  top: 255px;
-  left: 29px;
-  width: 117px;
-  font-size: 8.288px;
+  top: 88%;
+  left: 7.645%;
+  width: 64.22%;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "BBC Reith Sans:Regular", Arial, sans-serif;
+  font-size: 8px;
   line-height: 1.2;
+}
+
+.autoplay-footnote span {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
 }
 
 .autoplay-close:focus-visible,
 .autoplay-toggle-control:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 2px;
+}
+
+@media (min-width: 480px) {
+  .autoplay-prompt-backdrop {
+    padding: 40px;
+  }
+
+  .autoplay-prompt {
+    width: min(620px, calc(100vw - 80px));
+    aspect-ratio: 620 / 463;
+  }
+
+  .autoplay-prompt-art {
+    right: 0;
+    width: 132.581%;
+  }
+
+  .autoplay-feature-label {
+    top: 10.367%;
+    left: 7.742%;
+    padding: 8px 12px;
+    font-size: 16px;
+  }
+
+  .autoplay-close {
+    top: 6.048%;
+    right: 4.516%;
+    width: 48px;
+    height: 48px;
+  }
+
+  .autoplay-close::before,
+  .autoplay-close::after {
+    width: 3.314px;
+    height: 29.823px;
+  }
+
+  .autoplay-prompt h2 {
+    top: 19.007%;
+    left: 7.742%;
+    font-size: 56px;
+  }
+
+  .autoplay-intro {
+    top: 34.557%;
+    left: 7.742%;
+    width: 64.516%;
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .autoplay-description {
+    top: 43.197%;
+    left: 7.742%;
+    width: 49.839%;
+    font-size: 16px;
+  }
+
+  .autoplay-description-wide,
+  .autoplay-toggle-label-wide {
+    display: inline;
+  }
+
+  .autoplay-description-compact,
+  .autoplay-toggle-label-compact {
+    display: none;
+  }
+
+  .autoplay-toggle-control {
+    top: 62.635%;
+    left: 7.742%;
+    width: 61.29%;
+    height: 17.279%;
+    padding: 0 24px 0 32px;
+    font-size: 24px;
+  }
+
+  .autoplay-switch {
+    width: 96px;
+    height: 44px;
+    border-radius: 40px;
+  }
+
+  .autoplay-switch img {
+    top: 6px;
+    left: 7px;
+  }
+
+  .autoplay-switch.is-enabled img {
+    transform: translateX(50px);
+  }
+
+  .autoplay-footnote {
+    top: 85.097%;
+    left: 7.742%;
+    width: 80.645%;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 800px) {
+  .autoplay-prompt {
+    width: min(888px, calc(100vw - 112px));
+    aspect-ratio: 888 / 540;
+    transform: translateY(-30px);
+    box-shadow: 0 16px 112px rgba(0, 0, 0, 0.6);
+  }
+
+  .autoplay-prompt-art {
+    width: 108.108%;
+  }
+
+  .autoplay-feature-label {
+    top: 8.889%;
+    left: 5.405%;
+    font-size: 24px;
+  }
+
+  .autoplay-close {
+    top: 4.444%;
+    right: 2.703%;
+  }
+
+  .autoplay-prompt h2 {
+    top: 18.148%;
+    left: 5.405%;
+    font-size: 64px;
+  }
+
+  .autoplay-intro {
+    top: 31.481%;
+    left: 5.405%;
+    width: 62.838%;
+    font-size: 32px;
+    line-height: 1.4;
+  }
+
+  .autoplay-description {
+    top: 44.259%;
+    left: 5.405%;
+    width: 57.432%;
+    font-size: 24px;
+  }
+
+  .autoplay-toggle-control {
+    top: 64.259%;
+    left: 5.405%;
+    width: 54.054%;
+    height: 14.815%;
+  }
+
+  .autoplay-footnote {
+    top: 86.667%;
+    left: 5.405%;
+    width: 56.306%;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .autoplay-prompt {
+    width: 1000px;
+    height: 600px;
+    transform: none;
+  }
+
+  .autoplay-prompt-art {
+    width: 1068px;
+    height: 601px;
+  }
+
+  .autoplay-feature-label {
+    top: 64px;
+    left: 72px;
+  }
+
+  .autoplay-close {
+    top: 24px;
+    right: 24px;
+  }
+
+  .autoplay-prompt h2 {
+    top: 114px;
+    left: 72px;
+  }
+
+  .autoplay-intro {
+    top: 186px;
+    left: 72px;
+    width: 558px;
+  }
+
+  .autoplay-description {
+    top: 255px;
+    left: 72px;
+    width: 558px;
+  }
+
+  .autoplay-toggle-control {
+    top: 371px;
+    left: 72px;
+    width: 500px;
+    height: 80px;
+  }
+
+  .autoplay-footnote {
+    top: 514px;
+    left: 72px;
+    width: 500px;
+  }
 }
 
 .story-viewer {

@@ -1209,13 +1209,19 @@ function AutoplayPrompt({ enabled, onChange, onClose }: AutoplayPromptProps) {
           onClick={onClose}
           aria-label="Close autoplay prompt"
         >
-          ×
+          <span aria-hidden="true">Close</span>
         </button>
         <h2 id="autoplay-prompt-title">Autoplay</h2>
-        <p className="autoplay-intro">For a richer story experience</p>
+        <p className="autoplay-intro">For a richer BBC experience</p>
         <p id="autoplay-prompt-description" className="autoplay-description">
-          Autoplaying video and audio will only play automatically if you choose
-          to enable them.
+          <span className="autoplay-description-wide">
+            Autoplay video, audio and animations is off by default. Enable it
+            now or later in your profile.
+          </span>
+          <span className="autoplay-description-compact">
+            Autoplay video, audio and animations are off by default. Enable now
+            or later in your profile.
+          </span>
         </p>
         <button
           className="autoplay-toggle-control"
@@ -1224,16 +1230,22 @@ function AutoplayPrompt({ enabled, onChange, onClose }: AutoplayPromptProps) {
           aria-checked={enabled}
           onClick={() => onChange(!enabled)}
         >
-          <span>Enable</span>
+          <span className="autoplay-toggle-label">
+            <span className="autoplay-toggle-label-wide">Enable autoplay</span>
+            <span className="autoplay-toggle-label-compact">Enable</span>
+          </span>
           <span
             className={`autoplay-switch ${enabled ? "is-enabled" : ""}`}
             aria-hidden="true"
           >
-            <img src={`${A}/4fd12.svg`} alt="" />
+            <picture>
+              <source media="(min-width: 480px)" srcSet={`${A}/9d578.svg`} />
+              <img src={`${A}/4fd12.svg`} alt="" />
+            </picture>
           </span>
         </button>
         <p className="autoplay-footnote">
-          You can turn this off at any time in your profile.
+          You can change this at any time in <span>Accessibility Settings</span>
         </p>
       </section>
     </div>
@@ -1272,10 +1284,7 @@ export default function App() {
               src={`${A}/profile-avatar.png`}
               alt="Your profile"
             />
-            <BBCLogo
-              key={bbcLogoAnimationRun}
-              animated={autoplayEnabled}
-            />
+            <BBCLogo key={bbcLogoAnimationRun} animated={autoplayEnabled} />
             <button type="button" aria-label="Open global navigation">
               <img src={`${A}/af46b.svg`} alt="" />
             </button>
