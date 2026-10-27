@@ -284,7 +284,7 @@ button {
   column-gap: clamp(32px, calc(16.667vw - 34.667px), 82px);
   overflow-x: auto;
   overscroll-behavior-inline: contain;
-  padding: 24px;
+  padding: 14px 24px;
   scrollbar-width: none;
   scroll-padding-inline: 24px;
   scroll-snap-type: x proximity;
