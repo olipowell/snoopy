@@ -153,7 +153,7 @@ export const liveArticle: LiveArticle = {
       author: {
         name: "Rachel Flynn",
         role: "Live reporter",
-        image: "authors/rachel-flynn.webp",
+        image: "authors/rachel-flynn.svg",
       },
       paragraphs: [
         "Storm Boelo brought chaos to the UK on Sunday, with a top wind gust of 85mph recorded in the Scottish village of Machrihanish.",
@@ -228,7 +228,7 @@ export const liveArticle: LiveArticle = {
       author: {
         name: "Nichola Rutherford",
         role: "Reporting from Mid Kelton",
-        image: "authors/nichola-rutherford.webp",
+        image: "authors/nichola-rutherford.svg",
       },
       paragraphs: [
         "A 60-year-old man died after being hit by a tree on a minor road near Mid Kelton in Dumfries and Galloway.",
@@ -244,7 +244,7 @@ export const liveArticle: LiveArticle = {
       author: {
         name: "Shiona McCallum",
         role: "Reporting from Dumbarton",
-        image: "authors/shiona-mccallum.webp",
+        image: "authors/shiona-mccallum.svg",
       },
       paragraphs: [
         "Many shops and cafés on Dumbarton High Street are closed because of the storm, with workers already beginning the clean-up at some businesses.",
@@ -260,7 +260,7 @@ export const liveArticle: LiveArticle = {
       author: {
         name: "Liz Copper",
         role: "Reporting from Kidsgrove",
-        image: "authors/liz-copper.webp",
+        image: "authors/liz-copper.svg",
       },
       paragraphs: [
         "A clean-up is under way at a dog rescue charity in north Staffordshire after its kennels flooded during Storm Austen, which swept through before Storm Boelo.",
