@@ -1894,6 +1894,7 @@ button {
 
 .autoplay-prompt {
   position: relative;
+  container-type: inline-size;
   width: min(327px, calc(100vw - 48px));
   aspect-ratio: 327 / 250;
   overflow: hidden;
@@ -1919,11 +1920,11 @@ button {
   top: 8%;
   left: 7.339%;
   border-radius: 0;
-  padding: 4px 6px 6px;
+  padding: 1.223cqw 1.835cqw 1.835cqw;
   color: #fff;
   background: #000;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
-  font-size: 12px;
+  font-size: 3.67cqw;
   line-height: 1;
 }
 
@@ -1933,8 +1934,8 @@ button {
   top: 3.6%;
   right: 3.058%;
   display: grid;
-  width: 32px;
-  height: 32px;
+  width: 9.786cqw;
+  height: 9.786cqw;
   place-items: center;
   color: #fff;
   font-size: 0;
@@ -1943,8 +1944,8 @@ button {
 .autoplay-close::before,
 .autoplay-close::after {
   position: absolute;
-  width: 1.526px;
-  height: 13.732px;
+  width: 0.467cqw;
+  height: 4.2cqw;
   background: currentColor;
   content: "";
 }
@@ -1971,7 +1972,7 @@ button {
   top: 18.4%;
   left: 7.339%;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
-  font-size: 32px;
+  font-size: 9.786cqw;
   line-height: 1;
 }
 
@@ -1981,7 +1982,7 @@ button {
   left: 7.339%;
   width: 54.74%;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
-  font-size: 13px;
+  font-size: 3.976cqw;
   line-height: 1.4;
 }
 
@@ -1992,7 +1993,7 @@ button {
   width: 53.211%;
   color: rgba(255, 255, 255, 0.9);
   font-family: "BBC Reith Sans:Regular", Arial, sans-serif;
-  font-size: 10px;
+  font-size: 3.058cqw;
   line-height: 1.4;
 }
 
@@ -2010,29 +2011,31 @@ button {
   height: 13.6%;
   align-items: center;
   justify-content: space-between;
-  border-radius: 29.468px;
-  padding: 0 7.8px 0 13px;
+  border-radius: 9.011cqw;
+  padding: 0 2.385cqw 0 3.976cqw;
   color: #000;
   background: #fff;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
-  font-size: 12px;
+  font-size: 3.67cqw;
   line-height: 1.4;
 }
 
 .autoplay-switch {
   position: relative;
-  width: 44.201px;
-  height: 20.259px;
+  width: 13.517cqw;
+  height: 6.195cqw;
   flex: 0 0 auto;
-  border-radius: 18.417px;
+  border-radius: 5.632cqw;
   background: #bcbcbc;
   transition: background 180ms ease;
 }
 
 .autoplay-switch img {
   position: absolute;
-  top: 2.76px;
-  left: 3.22px;
+  top: 0.844cqw;
+  left: 0.985cqw;
+  width: 4.506cqw;
+  height: 4.506cqw;
   transition: transform 180ms ease;
 }
 
@@ -2041,7 +2044,7 @@ button {
 }
 
 .autoplay-switch.is-enabled img {
-  transform: translateX(22.78px);
+  transform: translateX(6.966cqw);
 }
 
 .autoplay-footnote {
@@ -2051,7 +2054,7 @@ button {
   width: 64.22%;
   color: rgba(255, 255, 255, 0.9);
   font-family: "BBC Reith Sans:Regular", Arial, sans-serif;
-  font-size: 8px;
+  font-size: 2.446cqw;
   line-height: 1.2;
 }
 
@@ -2085,34 +2088,34 @@ button {
   .autoplay-feature-label {
     top: 10.367%;
     left: 7.742%;
-    padding: 8px 12px;
-    font-size: 16px;
+    padding: 1.29cqw 1.935cqw;
+    font-size: 2.581cqw;
   }
 
   .autoplay-close {
     top: 6.048%;
     right: 4.516%;
-    width: 48px;
-    height: 48px;
+    width: 7.742cqw;
+    height: 7.742cqw;
   }
 
   .autoplay-close::before,
   .autoplay-close::after {
-    width: 3.314px;
-    height: 29.823px;
+    width: 0.535cqw;
+    height: 4.81cqw;
   }
 
   .autoplay-prompt h2 {
     top: 19.007%;
     left: 7.742%;
-    font-size: 56px;
+    font-size: 9.032cqw;
   }
 
   .autoplay-intro {
     top: 34.557%;
     left: 7.742%;
     width: 64.516%;
-    font-size: 24px;
+    font-size: 3.871cqw;
     line-height: 1;
   }
 
@@ -2120,7 +2123,7 @@ button {
     top: 43.197%;
     left: 7.742%;
     width: 49.839%;
-    font-size: 16px;
+    font-size: 2.581cqw;
   }
 
   .autoplay-description-wide,
@@ -2138,30 +2141,33 @@ button {
     left: 7.742%;
     width: 61.29%;
     height: 17.279%;
-    padding: 0 24px 0 32px;
-    font-size: 24px;
+    border-radius: 10.323cqw;
+    padding: 0 3.871cqw 0 5.161cqw;
+    font-size: 3.871cqw;
   }
 
   .autoplay-switch {
-    width: 96px;
-    height: 44px;
-    border-radius: 40px;
+    width: 15.484cqw;
+    height: 7.097cqw;
+    border-radius: 6.452cqw;
   }
 
   .autoplay-switch img {
-    top: 6px;
-    left: 7px;
+    top: 0.968cqw;
+    left: 1.129cqw;
+    width: 5.161cqw;
+    height: 5.161cqw;
   }
 
   .autoplay-switch.is-enabled img {
-    transform: translateX(50px);
+    transform: translateX(8.065cqw);
   }
 
   .autoplay-footnote {
     top: 85.097%;
     left: 7.742%;
     width: 80.645%;
-    font-size: 16px;
+    font-size: 2.581cqw;
   }
 }
 
@@ -2180,25 +2186,34 @@ button {
   .autoplay-feature-label {
     top: 8.889%;
     left: 5.405%;
-    font-size: 24px;
+    padding: 0.901cqw 1.351cqw;
+    font-size: 2.703cqw;
   }
 
   .autoplay-close {
     top: 4.444%;
     right: 2.703%;
+    width: 5.405cqw;
+    height: 5.405cqw;
+  }
+
+  .autoplay-close::before,
+  .autoplay-close::after {
+    width: 0.373cqw;
+    height: 3.358cqw;
   }
 
   .autoplay-prompt h2 {
     top: 18.148%;
     left: 5.405%;
-    font-size: 64px;
+    font-size: 7.207cqw;
   }
 
   .autoplay-intro {
     top: 31.481%;
     left: 5.405%;
     width: 62.838%;
-    font-size: 32px;
+    font-size: 3.604cqw;
     line-height: 1.4;
   }
 
@@ -2206,7 +2221,7 @@ button {
     top: 44.259%;
     left: 5.405%;
     width: 57.432%;
-    font-size: 24px;
+    font-size: 2.703cqw;
   }
 
   .autoplay-toggle-control {
@@ -2214,13 +2229,33 @@ button {
     left: 5.405%;
     width: 54.054%;
     height: 14.815%;
+    border-radius: 7.207cqw;
+    padding: 0 2.703cqw 0 3.604cqw;
+    font-size: 2.703cqw;
+  }
+
+  .autoplay-switch {
+    width: 10.811cqw;
+    height: 4.955cqw;
+    border-radius: 4.505cqw;
+  }
+
+  .autoplay-switch img {
+    top: 0.676cqw;
+    left: 0.788cqw;
+    width: 3.604cqw;
+    height: 3.604cqw;
+  }
+
+  .autoplay-switch.is-enabled img {
+    transform: translateX(5.63cqw);
   }
 
   .autoplay-footnote {
     top: 86.667%;
     left: 5.405%;
     width: 56.306%;
-    font-size: 18px;
+    font-size: 2.027cqw;
   }
 }
 
@@ -2239,28 +2274,41 @@ button {
   .autoplay-feature-label {
     top: 64px;
     left: 72px;
+    padding: 8px 12px;
+    font-size: 24px;
   }
 
   .autoplay-close {
     top: 24px;
     right: 24px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .autoplay-close::before,
+  .autoplay-close::after {
+    width: 3.314px;
+    height: 29.823px;
   }
 
   .autoplay-prompt h2 {
     top: 114px;
     left: 72px;
+    font-size: 64px;
   }
 
   .autoplay-intro {
     top: 186px;
     left: 72px;
     width: 558px;
+    font-size: 32px;
   }
 
   .autoplay-description {
     top: 255px;
     left: 72px;
     width: 558px;
+    font-size: 24px;
   }
 
   .autoplay-toggle-control {
@@ -2268,12 +2316,33 @@ button {
     left: 72px;
     width: 500px;
     height: 80px;
+    border-radius: 64px;
+    padding: 0 24px 0 32px;
+    font-size: 24px;
+  }
+
+  .autoplay-switch {
+    width: 96px;
+    height: 44px;
+    border-radius: 40px;
+  }
+
+  .autoplay-switch img {
+    top: 6px;
+    left: 7px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .autoplay-switch.is-enabled img {
+    transform: translateX(50px);
   }
 
   .autoplay-footnote {
     top: 514px;
     left: 72px;
     width: 500px;
+    font-size: 18px;
   }
 }
 
