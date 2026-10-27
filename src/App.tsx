@@ -1376,6 +1376,11 @@ export default function App() {
                     .replace(/\s+/g, "-")} ${
                     label === "In Depth" ? "in-depth-nav" : ""
                   }`}
+                  style={
+                    label === "Latest"
+                      ? { "--nav-active-background": "#008080" }
+                      : undefined
+                  }
                   onClick={() => setActiveNav(label)}
                 >
                   <img src={`${A}/${icon}`} alt="" />
