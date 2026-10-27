@@ -1852,7 +1852,7 @@ button {
   width: 320px;
   height: 300px;
   overflow: hidden;
-  border-radius: 29.468px;
+  border-radius: 0;
   color: #fff;
   background: #000;
   box-shadow: 0 7.367px 51.568px rgba(0, 0, 0, 0.6);
