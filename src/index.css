@@ -280,7 +280,8 @@ button {
   width: 100%;
   align-items: center;
   justify-content: safe center;
-  gap: 4px 0;
+  gap: 4px 32px;
+  column-gap: 32px;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   padding: 24px;
@@ -308,7 +309,7 @@ button {
   justify-content: center;
   gap: 2px 1px;
   border-radius: 32px;
-  padding: 8px 12px;
+  padding: 8px 0;
   font-family: "BBC Reith Sans:Bold", Arial, sans-serif;
   font-size: 10px;
   line-height: 16px;
@@ -324,9 +325,9 @@ button {
   position: absolute;
   z-index: -1;
   top: 0;
-  right: -12px;
+  right: -24px;
   bottom: 2px;
-  left: -12px;
+  left: -24px;
   border-radius: 48px;
   pointer-events: none;
   content: "";
@@ -2285,7 +2286,7 @@ button {
 
 @container article-page (min-width: 700px) {
   .page-nav {
-    column-gap: 16px;
+    column-gap: 32px;
   }
 }
 
