@@ -2294,7 +2294,14 @@ button {
 
 @container article-page (min-width: 700px) {
   .page-nav {
-    column-gap: 32px;
+    width: calc(100% - 48px);
+    justify-content: space-between;
+    gap: 4px 82px;
+    column-gap: 82px;
+    margin-right: 24px;
+    margin-left: 24px;
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
