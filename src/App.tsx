@@ -1278,7 +1278,10 @@ export default function App() {
             audioStationIndex !== null ? "has-audio-player" : ""
           }`}
         >
-          <header className="site-header">
+          <header
+            className="site-header"
+            style={{ paddingLeft: "42px", paddingRight: "42px" }}
+          >
             <img
               className="profile"
               src={`${A}/profile-avatar.png`}
