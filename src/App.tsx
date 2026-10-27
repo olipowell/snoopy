@@ -1213,7 +1213,11 @@ function AutoplayPrompt({ enabled, onChange, onClose }: AutoplayPromptProps) {
         </button>
         <h2 id="autoplay-prompt-title">Autoplay</h2>
         <p className="autoplay-intro">For a richer BBC experience</p>
-        <p id="autoplay-prompt-description" className="autoplay-description">
+        <p
+          id="autoplay-prompt-description"
+          className="autoplay-description"
+          style={{ fontSize: "clamp(10px, 2.3vw, 24px)" }}
+        >
           <span className="autoplay-description-wide">
             Autoplay video, audio and animations is off by default. Enable it
             now or later in your profile.
