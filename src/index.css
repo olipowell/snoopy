@@ -96,6 +96,47 @@ button {
   height: 24px;
 }
 
+.bbc-logo-animated {
+  overflow: visible;
+  fill: #000;
+}
+
+.bbc-logo-block {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bbc-logo-elevate 2s cubic-bezier(0.4, 0, 0.2, 1) both;
+  will-change: transform;
+}
+
+.bbc-logo-block-two {
+  animation-delay: 40ms;
+}
+
+.bbc-logo-block-three {
+  animation-delay: 80ms;
+}
+
+@keyframes bbc-logo-elevate {
+  0%,
+  7.5% {
+    transform: translateY(0) scaleY(1);
+  }
+
+  18%,
+  25% {
+    transform: translateY(-6px) scaleY(1);
+  }
+
+  45% {
+    transform: translateY(6px) scaleY(1.12);
+  }
+
+  60%,
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+}
+
 .site-header button {
   display: grid;
   width: 36px;
@@ -2340,6 +2381,10 @@ button {
   }
 
   .reaction.selected .lightbulb-rays {
+    animation: none;
+  }
+
+  .bbc-logo-block {
     animation: none;
   }
 
