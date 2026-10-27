@@ -104,15 +104,18 @@ button {
 .bbc-logo-block {
   transform-box: fill-box;
   transform-origin: center;
-  animation: bbc-logo-elevate 2s cubic-bezier(0.4, 0, 0.2, 1) both;
   will-change: transform;
 }
 
-.bbc-logo-block-two {
+.bbc-logo-animated .bbc-logo-block {
+  animation: bbc-logo-elevate 2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.bbc-logo-animated .bbc-logo-block-two {
   animation-delay: 40ms;
 }
 
-.bbc-logo-block-three {
+.bbc-logo-animated .bbc-logo-block-three {
   animation-delay: 80ms;
 }
 

@@ -1064,10 +1064,10 @@ function ThumbIcon({ down = false }: { down?: boolean }) {
   )
 }
 
-function BBCLogo() {
+function BBCLogo({ animated }: { animated: boolean }) {
   return (
     <svg
-      className="bbc-logo bbc-logo-animated"
+      className={`bbc-logo${animated ? " bbc-logo-animated" : ""}`}
       viewBox="0 0 84 24"
       role="img"
       aria-label="BBC"
@@ -1264,7 +1264,7 @@ export default function App() {
               src={`${A}/profile-avatar.png`}
               alt="Your profile"
             />
-            <BBCLogo />
+            <BBCLogo animated={autoplayEnabled} />
             <button type="button" aria-label="Open global navigation">
               <img src={`${A}/af46b.svg`} alt="" />
             </button>
