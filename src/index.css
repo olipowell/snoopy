@@ -109,7 +109,7 @@ button {
 }
 
 .topper {
-  margin: 0 12px;
+  margin: 0 24px;
   overflow: hidden;
   border-radius: 24px;
   background: #fff;
@@ -279,9 +279,9 @@ button {
   gap: 4px 0;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
-  padding: 24px 16px;
+  padding: 24px;
   scrollbar-width: none;
-  scroll-padding-inline: 16px;
+  scroll-padding-inline: 24px;
   scroll-snap-type: x proximity;
   touch-action: pan-x;
 }
@@ -445,6 +445,8 @@ button {
 }
 
 .story-section {
+  margin-right: 24px;
+  margin-left: 24px;
   padding: 22px 0 22px;
 }
 
@@ -455,9 +457,9 @@ button {
   gap: clamp(12px, 4vw, 17px);
   overflow-x: auto;
   overscroll-behavior-inline: contain;
-  padding: 0 16px 4px;
+  padding: 0 0 4px;
   scrollbar-width: none;
-  scroll-padding-inline: 16px;
+  scroll-padding-inline: 0;
   scroll-snap-type: x proximity;
   touch-action: pan-x;
 }
