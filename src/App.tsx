@@ -18,34 +18,46 @@ const navigation = [
 
 const stories = [
   {
-    image: "feeaf.png",
+    image: "stories/budget-story-1.jpg",
+    video: "stories/budget-story-1.mp4",
+    duration: 19.01,
+    name: "BBC Politics",
+    title: "Larry waits at No 10 ahead of the Budget",
+  },
+  {
+    image: "stories/budget-story-2.jpg",
+    video: "stories/budget-story-2.mp4",
+    duration: 10.01,
     name: "BBC News",
-    title: "Storm Boelo batters Cumbrian coastal communities",
+    title: "Larry makes his way across Downing Street",
   },
   {
-    image: "f2dfd.png",
-    name: "BBC Wales",
-    title: "Flooding disrupts train services around Cardiff",
+    image: "stories/budget-story-3.jpg",
+    video: "stories/budget-story-3.mp4",
+    duration: 8,
+    name: "BBC Business",
+    title: "Budget 2026: What to watch for",
   },
   {
-    image: "ade29.png",
-    name: "Sally Bundock",
-    title: "The latest Storm Boelo update from the newsroom",
+    image: "stories/budget-story-4.jpg",
+    video: "stories/budget-story-4.mp4",
+    duration: 27.61,
+    name: "BBC Politics",
+    title: "Reaction from Westminster ahead of the Budget",
   },
   {
-    image: "ad18a.png",
-    name: "BBC Weather",
-    title: "When will the strongest winds begin to ease?",
+    image: "stories/budget-story-5.jpg",
+    video: "stories/budget-story-5.mp4",
+    duration: 12.1,
+    name: "BBC News",
+    title: "Ministers leave Downing Street after Cabinet",
   },
   {
-    image: "5716f.png",
-    name: "BBC Scotland",
-    title: "Power cuts and flooding reported across Scotland",
-  },
-  {
-    image: "3cc5a.png",
-    name: "Joshua Nevett",
-    title: "What the weather warning colours mean",
+    image: "stories/budget-story-6.jpg",
+    video: "stories/budget-story-6.mp4",
+    duration: 6.05,
+    name: "BBC Business",
+    title: "What the Budget could mean for your money",
   },
 ]
 
@@ -201,6 +213,13 @@ function StoryViewer({ index, onChange, onClose }: StoryViewerProps) {
         {stories.map((story, itemIndex) => (
           <span
             key={story.title}
+            style={
+              itemIndex === index
+                ? {
+                    "--story-duration": `${stories[index].duration}s`,
+                  } as React.CSSProperties
+                : undefined
+            }
             className={
               itemIndex < index
                 ? "watched"
@@ -240,7 +259,7 @@ function StoryViewer({ index, onChange, onClose }: StoryViewerProps) {
           poster={`${A}/${stories[index].image}`}
           aria-label={stories[index].title}
         >
-          <source src={`${A}/story-video.mp4`} type="video/mp4" />
+          <source src={`${A}/${stories[index].video}`} type="video/mp4" />
         </video>
         <div className="story-shade" />
         <p>{stories[index].title}</p>

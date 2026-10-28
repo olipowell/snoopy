@@ -2564,7 +2564,7 @@ button {
 }
 
 .story-progress .playing::after {
-  animation: story-progress 12s linear forwards;
+  animation: story-progress var(--story-duration, 12s) linear forwards;
 }
 
 @keyframes story-progress {
@@ -2614,12 +2614,14 @@ button {
 
 .story-video-shell {
   position: relative;
-  width: 100vw;
-  height: 100dvh;
+  width: min(100vw, 56.25dvh);
+  aspect-ratio: 9 / 16;
+  flex: 0 0 auto;
   background: #111;
 }
 
 .story-video-shell video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
