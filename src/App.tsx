@@ -1251,6 +1251,12 @@ function AutoplayPrompt({ enabled, onChange, onClose }: AutoplayPromptProps) {
           <span
             className={`autoplay-switch ${enabled ? "is-enabled" : ""}`}
             aria-hidden="true"
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: "8px",
+              transform: "translateY(-50%)",
+            }}
           >
             <picture className="autoplay-switch-off-art">
               <source
