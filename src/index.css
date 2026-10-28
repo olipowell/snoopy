@@ -76,10 +76,10 @@ button {
   z-index: 20;
   top: 0;
   display: flex;
-  height: 88px;
+  height: 80px;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 32px 0;
+  padding: 16px 32px 0;
   background: rgba(245, 245, 247, 0.94);
   backdrop-filter: blur(14px);
 }
@@ -153,7 +153,7 @@ button {
 }
 
 .topper {
-  margin: 0 24px;
+  margin: 0 16px;
   overflow: hidden;
   border-radius: 24px;
   background: #fff;
@@ -328,9 +328,9 @@ button {
   column-gap: clamp(32px, calc(16.667vw - 34.667px), 82px);
   overflow-x: auto;
   overscroll-behavior-inline: contain;
-  padding: 14px 24px;
+  padding: 14px 16px;
   scrollbar-width: none;
-  scroll-padding-inline: 24px;
+  scroll-padding-inline: 16px;
   scroll-snap-type: x proximity;
   touch-action: pan-x;
 }
@@ -360,7 +360,7 @@ button {
 }
 
 .page-nav button.nav-latest {
-  padding-left: 24px;
+  padding-left: 16px;
 }
 
 .page-nav button.active {
@@ -453,11 +453,11 @@ button {
 
 .summary-card {
   position: relative;
-  width: calc(100% - 48px);
+  width: calc(100% - 32px);
   height: 178px;
   overflow: hidden;
-  margin-right: 24px;
-  margin-left: 24px;
+  margin-right: 16px;
+  margin-left: 16px;
   border-radius: 22px;
   padding: 22px 24px 16px;
 }
@@ -517,8 +517,8 @@ button {
 }
 
 .story-section {
-  margin-right: 24px;
-  margin-left: 24px;
+  margin-right: 16px;
+  margin-left: 16px;
   padding: 22px 0 22px;
 }
 
@@ -674,7 +674,7 @@ button {
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   margin-inline: -12px;
-  padding: 0 16px 16px 24px;
+  padding: 0 16px 16px;
   scrollbar-width: none;
   scroll-padding-inline: 4px;
   touch-action: pan-x;
@@ -780,7 +780,7 @@ button {
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   margin-inline: -12px;
-  padding: 0 24px 14px;
+  padding: 0 16px 14px;
   scrollbar-width: none;
   scroll-padding-inline: 4px;
   touch-action: pan-x;
@@ -1372,10 +1372,10 @@ button {
 }
 
 .live-update-card {
-  width: calc(100% - 48px);
-  margin-right: 24px;
+  width: calc(100% - 32px);
+  margin-right: 16px;
   margin-bottom: 24px;
-  margin-left: 24px;
+  margin-left: 16px;
   padding-right: 24px;
   padding-left: 24px;
   padding-top: 8px;
@@ -1383,11 +1383,11 @@ button {
 }
 
 .live-update-card#more-rain-and-strong-winds {
-  width: calc(100% - 48px);
+  width: calc(100% - 32px);
   margin-top: 0;
-  margin-right: 24px;
+  margin-right: 16px;
   margin-bottom: 24px;
-  margin-left: 24px;
+  margin-left: 16px;
 }
 
 .live-update-card .reaction {
@@ -2769,12 +2769,12 @@ button {
     column-gap: 0;
     margin-right: 0;
     margin-left: 0;
-    padding-right: 24px;
-    padding-left: 24px;
+    padding-right: 16px;
+    padding-left: 16px;
   }
 
   .page-nav button:last-child {
-    padding-right: 24px;
+    padding-right: 16px;
   }
 
   .page-nav button.active:last-child::before {
