@@ -730,6 +730,7 @@ function LiveUpdateCard({
     <section
       className={`card live-update-card ${isLast ? "final-card" : ""}`}
       id={update.id}
+      style={update.author?.image ? undefined : { paddingTop: 16 }}
     >
       <div className="live-update-toolbar">
         {update.author && update.author.name !== "BBC News" && (
