@@ -1263,11 +1263,6 @@ function AutoplayPrompt({ enabled, onChange, onClose }: AutoplayPromptProps) {
               className="autoplay-switch-knob"
               src={`${A}/autoplay-switch-knob.svg`}
               alt=""
-              style={
-                enabled
-                  ? { right: "8px", left: "auto", transform: "none" }
-                  : undefined
-              }
             />
           </span>
         </button>
