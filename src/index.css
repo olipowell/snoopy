@@ -1946,12 +1946,13 @@ button {
   position: absolute;
   z-index: 1;
   top: -17.6cqw;
-  left: 10.667cqw;
+  left: 50%;
   width: 78.667cqw;
   height: 65.6cqw;
   max-width: none;
   object-fit: contain;
   pointer-events: none;
+  transform: translateX(-50%);
 }
 
 .autoplay-feature-label {
@@ -2142,7 +2143,7 @@ button {
 
   .autoplay-presenter {
     top: -17.413cqw;
-    left: 18.905cqw;
+    left: 50%;
     width: 74.627cqw;
     height: 62.189cqw;
   }
@@ -2245,6 +2246,7 @@ button {
     left: 46.734cqw;
     width: 60.023cqw;
     height: 50cqw;
+    transform: none;
   }
 
   .autoplay-feature-label {
