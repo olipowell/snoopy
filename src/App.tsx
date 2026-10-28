@@ -1228,6 +1228,7 @@ function AutoplayPrompt({ enabled, onChange, onClose }: AutoplayPromptProps) {
         <button
           className="autoplay-close"
           type="button"
+          style={{ top: 0, right: 0 }}
           onClick={onClose}
           aria-label="Close autoplay prompt"
         >
