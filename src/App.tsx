@@ -1391,7 +1391,11 @@ export default function App() {
               style={{ transform: "translateX(-6px)" }}
             />
             <BBCLogo key={bbcLogoAnimationRun} animated={autoplayEnabled} />
-            <button type="button" aria-label="Open global navigation">
+            <button
+              type="button"
+              aria-label="Open global navigation"
+              style={{ transform: "translateX(6px)" }}
+            >
               <img src={`${A}/af46b.svg`} alt="" />
             </button>
           </header>
