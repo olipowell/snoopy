@@ -18,6 +18,7 @@ const navigation = [
 
 const stories = [
   {
+    avatar: "stories/profiles/profile-01.jpg",
     image: "stories/budget-story-1.jpg",
     video: "stories/budget-story-1.mp4",
     duration: 19.01,
@@ -25,6 +26,7 @@ const stories = [
     title: "Larry waits at No 10 ahead of the Budget",
   },
   {
+    avatar: "stories/profiles/profile-02.jpg",
     image: "stories/budget-story-2.jpg",
     video: "stories/budget-story-2.mp4",
     duration: 10.01,
@@ -32,6 +34,7 @@ const stories = [
     title: "Larry makes his way across Downing Street",
   },
   {
+    avatar: "stories/profiles/profile-03.jpg",
     image: "stories/budget-story-3.jpg",
     video: "stories/budget-story-3.mp4",
     duration: 8,
@@ -39,6 +42,7 @@ const stories = [
     title: "Budget 2026: What to watch for",
   },
   {
+    avatar: "stories/profiles/profile-04.jpg",
     image: "stories/budget-story-4.jpg",
     video: "stories/budget-story-4.mp4",
     duration: 27.61,
@@ -46,6 +50,7 @@ const stories = [
     title: "Reaction from Westminster ahead of the Budget",
   },
   {
+    avatar: "stories/profiles/profile-05.jpg",
     image: "stories/budget-story-5.jpg",
     video: "stories/budget-story-5.mp4",
     duration: 12.1,
@@ -53,6 +58,7 @@ const stories = [
     title: "Ministers leave Downing Street after Cabinet",
   },
   {
+    avatar: "stories/budget-story-6.jpg",
     image: "stories/budget-story-6.jpg",
     video: "stories/budget-story-6.mp4",
     duration: 6.05,
@@ -234,7 +240,7 @@ function StoryViewer({ index, onChange, onClose }: StoryViewerProps) {
         <div className="story-person">
           <img
             className="story-current-avatar"
-            src={`${A}/${stories[index].image}`}
+            src={`${A}/${stories[index].avatar}`}
             alt=""
           />
           <span>{stories[index].name}</span>
@@ -1521,7 +1527,7 @@ export default function App() {
                         aria-label={`Play: ${story.title}`}
                       >
                         <span className="avatar-frame">
-                          <img src={`${A}/${story.image}`} alt="" />
+                          <img src={`${A}/${story.avatar}`} alt="" />
                         </span>
                       </button>
                     ))}
