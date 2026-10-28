@@ -1390,11 +1390,27 @@ export default function App() {
                 </span>
               </div>
               <div className="hero-media">
-                <img
-                  className="hero-poster"
-                  src={`${A}/${liveArticle.heroImage}`}
-                  alt={liveArticle.heroAlt}
-                />
+                {autoplayEnabled ? (
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    poster={`${A}/top-story-autoplay.jpg`}
+                    aria-label={liveArticle.heroAlt}
+                  >
+                    <source
+                      src={`${A}/top-story-autoplay.mp4`}
+                      type="video/mp4"
+                    />
+                  </video>
+                ) : (
+                  <img
+                    className="hero-poster"
+                    src={`${A}/top-story-autoplay.jpg`}
+                    alt={liveArticle.heroAlt}
+                  />
+                )}
                 <div className="live-pill">
                   <span className="live-dot hero-live-dot" aria-hidden="true" />
                   <span className="live-label">Live</span>
