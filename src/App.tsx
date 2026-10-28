@@ -719,7 +719,9 @@ function LiveUpdateCard({
         <figure className="live-update-media">
           {update.media.type === "video" ? (
             <video
+              autoPlay
               controls
+              muted
               playsInline
               preload="metadata"
               poster={
