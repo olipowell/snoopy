@@ -70,7 +70,7 @@ export const liveArticle: LiveArticle = {
           author: "You",
           avatar: "profile-avatar-snoopy.png",
           timestamp: "2 mins ago",
-          text: "The £45 saving is welcome, but it sounds like the timing means families could still face a very difficult winter.",
+          text: "Who lost £500m? Asking for a friend",
         },
         {
           id: "budget-comment-2",
