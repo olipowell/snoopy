@@ -1400,7 +1400,9 @@ export default function App() {
                     <span className="updated-time-long">
                       {liveArticle.updatedLabel}
                     </span>
-                    <span className="updated-time-short">Just now</span>
+                    <span className="updated-time-short">
+                      {liveArticle.updatedLabel.replace(/^Updated\s+/i, "")}
+                    </span>
                   </span>
                 </span>
                 <span className="updated-item">
