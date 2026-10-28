@@ -1901,6 +1901,14 @@ button {
   margin-top: 0;
 }
 
+.inline-comment-gif {
+  display: block;
+  width: 50%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
 .final-card {
   margin-bottom: 24px;
 }

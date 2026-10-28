@@ -654,7 +654,7 @@ function InlineComments({
       )}
       {comments.length > 0 && (
         <ol className="inline-comments-list">
-          {comments.map((comment) => (
+          {comments.map((comment, index) => (
             <li
               key={comment.id}
               className={[
@@ -679,6 +679,15 @@ function InlineComments({
                 >
                   {comment.text}
                 </p>
+                {threadId ===
+                  "standing-charge-removal-analysis-comments" &&
+                  index === 0 && (
+                    <img
+                      className="inline-comment-gif"
+                      src={`${A}/comments/latest-first-comment-reaction.gif`}
+                      alt="A woman gesturing in disbelief"
+                    />
+                  )}
               </div>
             </li>
           ))}
