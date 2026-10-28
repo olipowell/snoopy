@@ -1188,19 +1188,41 @@ function AutoplayPrompt({ enabled, onChange, onClose }: AutoplayPromptProps) {
       aria-describedby="autoplay-prompt-description"
     >
       <section className="autoplay-prompt">
+        <div className="autoplay-prompt-surface" aria-hidden="true">
+          <img
+            className="autoplay-prompt-background"
+            src={`${A}/autoplay-ambient-dark.jpg`}
+            alt=""
+          />
+        </div>
+        <div className="autoplay-media-panel" aria-hidden="true">
+          <img src={`${A}/autoplay-ambient-bright.jpg`} alt="" />
+        </div>
         {enabled ? (
           <video
-            className="autoplay-prompt-art"
+            className="autoplay-presenter"
             autoPlay
             loop
             muted
             playsInline
+            poster={`${A}/autoplay-presenter.png`}
             aria-label="Autoplay video preview"
           >
-            <source src={`${A}/autoplay-overlay.mp4`} type="video/mp4" />
+            <source
+              src={`${A}/autoplay-presenter.mov`}
+              type='video/quicktime; codecs="hvc1"'
+            />
+            <source
+              src={`${A}/autoplay-presenter.webm`}
+              type='video/webm; codecs="vp9"'
+            />
           </video>
         ) : (
-          <img className="autoplay-prompt-art" src={`${A}/80216.png`} alt="" />
+          <img
+            className="autoplay-presenter"
+            src={`${A}/autoplay-presenter.png`}
+            alt=""
+          />
         )}
         <span className="autoplay-feature-label">New feature</span>
         <button
@@ -1212,16 +1234,10 @@ function AutoplayPrompt({ enabled, onChange, onClose }: AutoplayPromptProps) {
           <span aria-hidden="true">Close</span>
         </button>
         <h2 id="autoplay-prompt-title">Autoplay</h2>
-        <p className="autoplay-intro">For a richer BBC experience</p>
         <p id="autoplay-prompt-description" className="autoplay-description">
-          <span className="autoplay-description-wide">
-            Autoplay video, audio and animations is off by default. Enable it
-            now or later in your profile.
-          </span>
-          <span className="autoplay-description-compact">
-            Autoplay video, audio and animations are off by default. Enable now
-            or later in your profile.
-          </span>
+          We&apos;ve improved your BBC experience with video, audio and
+          animations that can play automatically. Would you like to enable this
+          feature now?
         </p>
         <button
           className="autoplay-toggle-control"
@@ -1230,22 +1246,33 @@ function AutoplayPrompt({ enabled, onChange, onClose }: AutoplayPromptProps) {
           aria-checked={enabled}
           onClick={() => onChange(!enabled)}
         >
-          <span className="autoplay-toggle-label">
-            <span className="autoplay-toggle-label-wide">Enable autoplay</span>
-            <span className="autoplay-toggle-label-compact">Enable</span>
-          </span>
+          <span className="autoplay-toggle-label">Enable autoplay</span>
           <span
             className={`autoplay-switch ${enabled ? "is-enabled" : ""}`}
             aria-hidden="true"
           >
-            <picture>
-              <source media="(min-width: 480px)" srcSet={`${A}/9d578.svg`} />
-              <img src={`${A}/4fd12.svg`} alt="" />
+            <picture className="autoplay-switch-off-art">
+              <source
+                media="(min-width: 480px)"
+                srcSet={`${A}/autoplay-switch-tablet.svg`}
+              />
+              <img src={`${A}/autoplay-switch-mobile.svg`} alt="" />
             </picture>
+            <img
+              className="autoplay-switch-knob"
+              src={`${A}/autoplay-switch-knob.svg`}
+              alt=""
+            />
           </span>
         </button>
         <p className="autoplay-footnote">
-          You can change this at any time in <span>Accessibility Settings</span>
+          <span className="autoplay-footnote-wide">
+            You can change this any time in your{" "}
+          </span>
+          <span className="autoplay-footnote-compact">
+            You can change this in your{" "}
+          </span>
+          <span className="autoplay-settings-link">Accessibility Settings</span>
         </p>
       </section>
     </div>
