@@ -2416,14 +2416,15 @@ button {
     border-radius: 40px;
   }
 
-  .autoplay-switch img {
+  .autoplay-switch .autoplay-switch-knob,
+  .autoplay-switch.is-enabled .autoplay-switch-knob {
     top: 6px;
     left: 7px;
     width: 32px;
     height: 32px;
   }
 
-  .autoplay-switch.is-enabled img {
+  .autoplay-switch.is-enabled .autoplay-switch-knob {
     transform: translateX(50px);
   }
 
