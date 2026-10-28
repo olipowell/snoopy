@@ -753,7 +753,7 @@ function LiveUpdateCard({
             </span>
           </div>
         )}
-        <UpdateActions update={update} />
+        {update.author?.image && <UpdateActions update={update} />}
       </div>
       <h2>{update.headline}</h2>
       {update.paragraphs.map((paragraph) => (
