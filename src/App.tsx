@@ -1411,7 +1411,7 @@ export default function App() {
                     alt={liveArticle.heroAlt}
                   />
                 )}
-                <div className="live-pill">
+                <div className="live-pill" style={{ padding: "8px" }}>
                   <span className="live-dot hero-live-dot" aria-hidden="true" />
                   <span className="live-label">Live</span>
                 </div>
