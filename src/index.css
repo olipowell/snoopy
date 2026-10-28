@@ -1547,6 +1547,21 @@ button {
   margin-top: 16px;
 }
 
+.live-update-media {
+  width: calc(100% + 48px);
+  margin: 18px -24px 0;
+  overflow: hidden;
+  background: #222;
+}
+
+.live-update-media img,
+.live-update-media video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
 .live-update-card > ul {
   font-size: 14px;
 }

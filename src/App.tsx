@@ -130,36 +130,36 @@ const videoItems = [
 
 const comments = [
   {
-    author: "Hannah M.",
-    avatar: "49a3a.png",
+    author: "You",
+    avatar: "profile-avatar.png",
     date: "Today at 10:42",
-    text: "Thinking of everyone along the coast. The warning systems and quick response appear to have made a real difference.",
-    likes: 42,
-    dislikes: 3,
+    text: "Scrapping the fixed gas charge feels fairer, but the government needs to explain exactly what happens to larger low-income households.",
+    likes: 67,
+    dislikes: 4,
   },
   {
     author: "Daniel K.",
     avatar: "3cc5a.png",
     date: "Today at 10:31",
-    text: "The explainer on aftershocks was very useful. It would be good to see a map showing the areas that remain under advisory.",
-    likes: 28,
-    dislikes: 2,
+    text: "A £45 annual saving will help, although it may be swallowed up quickly if gas prices rise again in January.",
+    likes: 51,
+    dislikes: 6,
   },
   {
     author: "Amina R.",
     avatar: "ad18a.png",
     date: "Today at 10:18",
-    text: "Glad to hear there have been no reports of major damage. Hoping residents can return home safely soon.",
-    likes: 61,
-    dislikes: 4,
+    text: "I would like to hear more about energy efficiency and insulation, not just how charges are moved around the bill.",
+    likes: 83,
+    dislikes: 5,
   },
   {
     author: "Tom W.",
     avatar: "f2dfd.png",
     date: "Today at 09:56",
-    text: "Clear and measured reporting. Please keep the live updates and local guidance easy to find.",
-    likes: 19,
-    dislikes: 1,
+    text: "Fuel duty and the minimum wage will matter just as much to many households. The full detail at 12:30 will be crucial.",
+    likes: 34,
+    dislikes: 3,
   },
 ]
 
@@ -715,6 +715,25 @@ function LiveUpdateCard({
       {update.paragraphs.map((paragraph) => (
         <p key={paragraph}>{paragraph}</p>
       ))}
+      {update.media && (
+        <figure className="live-update-media">
+          {update.media.type === "video" ? (
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster={
+                update.media.poster ? `${A}/${update.media.poster}` : undefined
+              }
+              aria-label={update.media.alt}
+            >
+              <source src={`${A}/${update.media.src}`} type="video/mp4" />
+            </video>
+          ) : (
+            <img src={`${A}/${update.media.src}`} alt={update.media.alt} />
+          )}
+        </figure>
+      )}
       {update.bullets && (
         <ul>
           {update.bullets.map((bullet) => (
@@ -755,7 +774,9 @@ function LiveUpdateCard({
           >
             <img src={`${A}/${latestComment.avatar}`} alt="" />
             <span>
-              <time className="latest-comment-time">19:58</time>
+              <time className="latest-comment-time">
+                {latestComment.timestamp}
+              </time>
               <span className="latest-comment-text">{latestComment.text}</span>
             </span>
           </button>
