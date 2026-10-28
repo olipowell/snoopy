@@ -125,24 +125,34 @@ const audioItems = [...soundStations, ...podcasts]
 
 const videoItems = [
   {
-    poster: "a4e74.png",
+    video: "videos/video-01.mp4",
     title: "Watch: The latest from northern Japan",
-    duration: "00:42",
+    duration: "00:06",
   },
   {
-    poster: "ade29.png",
+    video: "videos/video-02.mp4",
     title: "BBC analysis: What happens after a major earthquake",
-    duration: "01:18",
+    duration: "00:06",
   },
   {
-    poster: "ad18a.png",
+    video: "videos/video-03.mp4",
     title: "Explained: How tsunami warning systems work",
-    duration: "02:04",
+    duration: "00:05",
   },
   {
-    poster: "feeaf.png",
+    video: "videos/video-04.mp4",
     title: "A guide to the emergency response",
-    duration: "01:35",
+    duration: "00:08",
+  },
+  {
+    video: "videos/video-05.mp4",
+    title: "More from BBC News",
+    duration: "00:06",
+  },
+  {
+    video: "videos/video-06.mp4",
+    title: "Latest video update",
+    duration: "00:08",
   },
 ]
 
@@ -860,10 +870,9 @@ function VideosPage() {
                 }}
                 preload="metadata"
                 playsInline
-                poster={`${A}/${video.poster}`}
                 onEnded={() => setPlayingIndex(null)}
               >
-                <source src={`${A}/story-video.mp4`} type="video/mp4" />
+                <source src={`${A}/${video.video}`} type="video/mp4" />
               </video>
               <span
                 className={`video-play-icon ${
