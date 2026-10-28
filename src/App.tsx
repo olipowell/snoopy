@@ -1387,6 +1387,7 @@ export default function App() {
               className="profile"
               src={`${A}/profile-avatar-snoopy.png`}
               alt="Your profile"
+              style={{ transform: "translateX(-6px)" }}
             />
             <BBCLogo key={bbcLogoAnimationRun} animated={autoplayEnabled} />
             <button type="button" aria-label="Open global navigation">
