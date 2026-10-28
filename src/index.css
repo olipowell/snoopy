@@ -2537,9 +2537,10 @@ button {
   position: absolute;
   z-index: 5;
   top: max(64px, calc(env(safe-area-inset-top) + 12px));
-  right: 12px;
-  left: 12px;
+  left: 50%;
   display: flex;
+  width: min(calc(100vw - 24px), calc(56.25dvh - 24px));
+  transform: translateX(-50%);
   gap: 4px;
 }
 
