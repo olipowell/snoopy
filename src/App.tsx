@@ -58,7 +58,7 @@ const stories = [
     title: "Ministers leave Downing Street after Cabinet",
   },
   {
-    avatar: "stories/budget-story-6.jpg",
+    avatar: "stories/profiles/profile-06.jpg",
     image: "stories/budget-story-6.jpg",
     video: "stories/budget-story-6.mp4",
     duration: 6.05,
