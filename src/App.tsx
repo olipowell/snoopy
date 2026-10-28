@@ -125,34 +125,34 @@ const audioItems = [...soundStations, ...podcasts]
 
 const videoItems = [
   {
-    video: "videos/video-01.mp4",
-    title: "Watch: The latest from northern Japan",
-    duration: "00:06",
-  },
-  {
-    video: "videos/video-02.mp4",
-    title: "BBC analysis: What happens after a major earthquake",
-    duration: "00:06",
-  },
-  {
-    video: "videos/video-03.mp4",
-    title: "Explained: How tsunami warning systems work",
-    duration: "00:05",
-  },
-  {
-    video: "videos/video-04.mp4",
-    title: "A guide to the emergency response",
+    video: "videos/video-06.mp4",
+    title: "What the Budget could mean for your money",
     duration: "00:08",
   },
   {
     video: "videos/video-05.mp4",
-    title: "More from BBC News",
+    title: "Ministers leave Downing Street after Cabinet",
     duration: "00:06",
   },
   {
-    video: "videos/video-06.mp4",
-    title: "Latest video update",
+    video: "videos/video-04.mp4",
+    title: "Reaction from Westminster ahead of the Budget",
     duration: "00:08",
+  },
+  {
+    video: "videos/video-03.mp4",
+    title: "Budget 2026: What to watch for",
+    duration: "00:05",
+  },
+  {
+    video: "videos/video-02.mp4",
+    title: "The key announcements expected from the Chancellor",
+    duration: "00:06",
+  },
+  {
+    video: "videos/video-01.mp4",
+    title: "Inside Downing Street ahead of the Budget",
+    duration: "00:06",
   },
 ]
 
