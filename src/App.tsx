@@ -22,7 +22,7 @@ const stories = [
     image: "stories/budget-story-1.jpg",
     video: "stories/budget-story-1.mp4",
     duration: 19.01,
-    name: "BBC Politics",
+    name: "Shanequa Paris",
     title: "Larry waits at No 10 ahead of the Budget",
   },
   {
@@ -30,7 +30,7 @@ const stories = [
     image: "stories/budget-story-2.jpg",
     video: "stories/budget-story-2.mp4",
     duration: 10.01,
-    name: "BBC News",
+    name: "Ricky Boleto",
     title: "Larry makes his way across Downing Street",
   },
   {
@@ -38,7 +38,7 @@ const stories = [
     image: "stories/budget-story-3.jpg",
     video: "stories/budget-story-3.mp4",
     duration: 8,
-    name: "BBC Business",
+    name: "Chris Mason",
     title: "Budget 2026: What to watch for",
   },
   {
@@ -46,7 +46,7 @@ const stories = [
     image: "stories/budget-story-4.jpg",
     video: "stories/budget-story-4.mp4",
     duration: 27.61,
-    name: "BBC Politics",
+    name: "Laura Kuenssberg",
     title: "Reaction from Westminster ahead of the Budget",
   },
   {
@@ -54,7 +54,7 @@ const stories = [
     image: "stories/budget-story-5.jpg",
     video: "stories/budget-story-5.mp4",
     duration: 12.1,
-    name: "BBC News",
+    name: "Nina Blissett",
     title: "Ministers leave Downing Street after Cabinet",
   },
   {
@@ -62,7 +62,7 @@ const stories = [
     image: "stories/budget-story-6.jpg",
     video: "stories/budget-story-6.mp4",
     duration: 6.05,
-    name: "BBC Business",
+    name: "Your Voice",
     title: "What the Budget could mean for your money",
   },
 ]
