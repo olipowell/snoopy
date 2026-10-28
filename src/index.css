@@ -280,7 +280,7 @@ button {
 .live-pill {
   position: absolute;
   z-index: 1;
-  bottom: 14px;
+  top: 14px;
   left: 16px;
   display: flex;
   align-items: center;
