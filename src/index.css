@@ -1028,6 +1028,14 @@ button {
   line-height: 1.45;
 }
 
+.comment-gif {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 14px;
+  border-radius: 14px;
+}
+
 .comment-footer {
   display: flex;
   align-items: center;

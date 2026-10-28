@@ -1179,6 +1179,13 @@ function CommentsPage() {
                 </div>
               </div>
               <p>{comment.text}</p>
+              {index === 0 && (
+                <img
+                  className="comment-gif"
+                  src={`${A}/comments/first-comment-reaction.gif`}
+                  alt="A surprised man reacting on the phone"
+                />
+              )}
               <div className="comment-footer">
                 <time>{comment.date}</time>
                 <div className="comment-votes">
