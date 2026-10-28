@@ -1187,7 +1187,7 @@ function CommentsPage() {
                   <h3>{comment.author}</h3>
                 </div>
               </div>
-              <p>{comment.text}</p>
+              <p hidden={index === 0}>{comment.text}</p>
               {index === 0 && (
                 <img
                   className="comment-gif"
