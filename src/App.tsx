@@ -1426,7 +1426,10 @@ export default function App() {
                 <span className="updated-item">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
-                      fill="#008080"
+                      fill="none"
+                      stroke="#008080"
+                      strokeWidth="1.75"
+                      strokeLinejoin="round"
                       d="M5.25 4.5h13.5A2.25 2.25 0 0 1 21 6.75v7.5a2.25 2.25 0 0 1-2.25 2.25H11l-4.75 3v-3h-1A2.25 2.25 0 0 1 3 14.25v-7.5A2.25 2.25 0 0 1 5.25 4.5Z"
                     />
                   </svg>
