@@ -732,7 +732,7 @@ function LiveUpdateCard({
       id={update.id}
     >
       <div className="live-update-toolbar">
-        {update.author && (
+        {update.author && update.author.name !== "BBC News" && (
           <div className="live-update-author">
             {update.author.image ? (
               <img
