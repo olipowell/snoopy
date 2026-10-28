@@ -1487,7 +1487,9 @@ export default function App() {
                 )}
                 <div className="live-pill" style={{ padding: "8px" }}>
                   <span className="live-dot hero-live-dot" aria-hidden="true" />
-                  <span className="live-label">Live</span>
+                  <span className="live-label" style={{ fontSize: 20 }}>
+                    Live
+                  </span>
                 </div>
               </div>
             </section>
