@@ -68,7 +68,7 @@ export const liveArticle: LiveArticle = {
         {
           id: "budget-comment-1",
           author: "You",
-          avatar: "profile-avatar.png",
+          avatar: "profile-avatar-snoopy.png",
           timestamp: "2 mins ago",
           text: "The £45 saving is welcome, but it sounds like the timing means families could still face a very difficult winter.",
         },

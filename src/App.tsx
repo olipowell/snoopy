@@ -131,7 +131,7 @@ const videoItems = [
 const comments = [
   {
     author: "You",
-    avatar: "profile-avatar.png",
+    avatar: "profile-avatar-snoopy.png",
     date: "Today at 10:42",
     text: "Scrapping the fixed gas charge feels fairer, but the government needs to explain exactly what happens to larger low-income households.",
     likes: 67,
@@ -674,7 +674,7 @@ function LiveUpdateCard({
       {
         id: `${update.id}-user-comment-${Date.now()}`,
         author: "You",
-        avatar: "profile-avatar.png",
+        avatar: "profile-avatar-snoopy.png",
         timestamp: "Just now",
         text,
       },
@@ -1335,7 +1335,7 @@ export default function App() {
           >
             <img
               className="profile"
-              src={`${A}/profile-avatar.png`}
+              src={`${A}/profile-avatar-snoopy.png`}
               alt="Your profile"
             />
             <BBCLogo key={bbcLogoAnimationRun} animated={autoplayEnabled} />
