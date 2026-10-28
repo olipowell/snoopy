@@ -1398,7 +1398,8 @@ export default function App() {
                   </svg>
                   <span className="updated-stat updated-time-stat">
                     <span className="updated-time-long">
-                      {liveArticle.updatedLabel}
+                      <span className="updated-detail">Updated </span>
+                      {liveArticle.updatedLabel.replace(/^Updated\s+/i, "")}
                     </span>
                     <span className="updated-time-short">
                       {liveArticle.updatedLabel.replace(/^Updated\s+/i, "")}
